@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac Slice - Visualize & Reclaim Your Storage</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="assets/mac_slice_logo.png" alt="Mac Slice Logo" style="width: 28px; height: 28px; border-radius: 6px;">
+                <span>Mac Slice</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it Works</a>
+                <a href="#pro">Pricing</a>
+                <a href="#faq">FAQ</a>
+                <button class="buy-btn" onclick="openProModal()">Get Pro</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Your Mac.<br>
+                <div class="rotating-text-wrapper">
+                    <span class="rotating-text">Lighter than air.</span>
+                    <span class="rotating-text">Faster than ever.</span>
+                    <span class="rotating-text">Beautifully clean.</span>
+                </div>
+            </h1>
+            <p class="hero-subtitle">Visualize your entire file system in seconds, strip out hidden bloated architecture, and instantly reclaim gigabytes of space with absolute precision.</p>
+            <div class="hero-cta-group">
+                <a href="#" class="cta-primary">Download for free</a>
+                <button class="cta-primary cta-premium" onclick="openProModal()">Get Pro</button>
+            </div>
+            <p class="hero-meta">Requires macOS 13.0 or later. Built exclusively for Apple Silicon and Intel.</p>
+        </div>
+        <div class="hero-image-container">
+            <img src="assets/screenshots/hero_generated.jpg" alt="Mac Slice Interface" class="hero-image">
+        </div>
+    </header>
+
+    <!-- Statement Section -->
+    <section class="statement-section">
+        <div class="statement-content">
+            <h2>Storage management shouldn't feel like a chore. It should feel like magic.</h2>
+            <p>Mac Slice was engineered from the ground up in pure Swift to be the fastest, safest, and most beautiful storage analyzer ever built for macOS. No bloated web frameworks. No spinning beachballs. Just pure, native performance.</p>
+        </div>
+    </section>
+
+    <!-- Feature 1: Architecture Stripper -->
+    <section class="feature-section left-align" id="features">
+        <div class="feature-text">
+            <h4 class="feature-eyebrow">Architecture Stripper</h4>
+            <h2 class="feature-title">Universal Binaries.<br>Universally bloated.</h2>
+            <p class="feature-desc">Over 60% of the apps on your Mac carry dead weight. Developers ship "Universal" apps containing both Intel (x86_64) and Apple Silicon (arm64) code so they run on any Mac. The problem? Your Mac only needs one of them.</p>
+            
+            <ul class="feature-list">
+                <li>
+                    <strong>Surgical Extraction</strong>
+                    <p>Mac Slice detects apps with redundant architectures and safely strips the unused code without breaking the app signature.</p>
+                </li>
+                <li>
+                    <strong>Massive Savings</strong>
+                    <p>Reclaim an average of 1.5GB to 3GB of space just by stripping heavy apps like Chrome, Xcode, and Adobe CC.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="feature-image-wrapper parallax-img">
+            <img src="assets/screenshots/feature3.png" alt="Architecture Stripper">
+        </div>
+    </section>
+
+    <!-- Feature 2: Junk Cleaner -->
+    <section class="feature-section right-align">
+        <div class="feature-text">
+            <h4 class="feature-eyebrow">Deep System Clean</h4>
+            <h2 class="feature-title">Find the ghosts in your machine.</h2>
+            <p class="feature-desc">Go beyond the basics. Mac Slice scans the deepest layers of your library to find and eradicate hidden Xcode caches, orphaned developer logs, and massive temporary files.</p>
+            
+            <ul class="feature-list">
+                <li>
+                    <strong>Developer Caches</strong>
+                    <p>Safely clear out massive NPM, Pip, CocoaPods, and Homebrew caches with a single click.</p>
+                </li>
+                </li>
+            </ul>
+        </div>
+        <div class="feature-image-wrapper parallax-img">
+            <img src="assets/screenshots/media_1790450718337.png" alt="Junk Cleaner">
+        </div>
+    </section>
+
+    <!-- Feature 3: Leftover App Residue -->
+    <section class="feature-section left-align">
+        <div class="feature-text">
+            <h4 class="feature-eyebrow">Complete Uninstallation</h4>
+            <h2 class="feature-title">Leftover App Residue.</h2>
+            <p class="feature-desc">Dragging an app to the trash leaves behind gigabytes of preference files, application support folders, and hidden caches. Mac Slice hunts them down and safely obliterates them.</p>
+        </div>
+        <div class="feature-image-wrapper parallax-img">
+            <img src="assets/screenshots/media_1790450535782.png" alt="Leftover App Residue">
+        </div>
+    </section>
+
+    <!-- Feature 4: System Monitor -->
+    <section class="feature-section right-align">
+        <div class="feature-text">
+            <h4 class="feature-eyebrow">Real-Time Telemetry</h4>
+            <h2 class="feature-title">Your Mac’s vitals,<br>at a glance.</h2>
+            <p class="feature-desc">Monitor your CPU load, memory pressure, and live network speeds in a beautifully designed dashboard. Keep an eye on core temperatures across your P-Cores, E-Cores, and GPU.</p>
+        </div>
+        <div class="feature-image-wrapper parallax-img">
+            <img src="assets/screenshots/feature2.png" alt="System Monitor">
+        </div>
+    </section>
+
+    <!-- Bento Box Grid -->
+    <section class="bento-section">
+        <div class="bento-header">
+            <h2>Small details. Massive impact.</h2>
+            <p>Every inch of Mac Slice is designed to make you faster and give you total control over your machine.</p>
+        </div>
+        
+        <div class="bento-grid">
+            <div class="bento-card span-2 dark-card">
+                <h3>Global Spotlight Search</h3>
+                <p>Press <strong>⌘⇧Space</strong> from anywhere in macOS to instantly summon the Mac Slice search bar. Find massive hidden files or ancient developer caches without even opening the main app.</p>
+            </div>
+            
+            <div class="bento-card">
+                <h3>100% Native Swift</h3>
+                <p>No Electron. No Chromium bloat. Built purely with Apple's native frameworks for instantaneous launch times and zero battery drain.</p>
+            </div>
+            
+            <div class="bento-card">
+                <h3>Smart Highlights</h3>
+                <p>Don't want to dig? Mac Slice automatically surfaces your largest downloads, oldest files, and heaviest developer folders the second you launch.</p>
+            </div>
+            
+            <div class="bento-card span-2 image-card">
+                <h3>Menu Bar Ready</h3>
+                <p>Always one click away. Monitor your disk usage and trigger quick cleans right from your Mac's menu bar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Mac Slice Works -->
+    <section class="how-it-works-section" id="how-it-works">
+        <div class="how-it-works-header">
+            <h2>How Mac Slice Works</h2>
+            <p>A look under the hood at our lightning-fast cleaning engine.</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-box">
+                <div class="step-number">01</div>
+                <h3>Deep System Traversal</h3>
+                <p>Mac Slice uses high-performance native Swift file enumerators to scan millions of files in seconds, bypassing slow generic methods to rapidly map your entire drive.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">02</div>
+                <h3>Intelligent Pattern Matching</h3>
+                <p>Our engine actively hunts for heavy developer directories (like node_modules and .venv), dormant AI models (Hugging Face, Ollama), and bloated Universal Binaries.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">03</div>
+                <h3>Safe & Surgical Removal</h3>
+                <p>We don't just blindly delete. Mac Slice carefully extracts unused architecture code (lipo commands) and clears orphaned cache folders while strictly protecting system integrity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-premium-section" id="pro">
+        <div class="pricing-header">
+            <h2>One tool. Three ways to slice it.</h2>
+            <p>Choose the plan that fits your Mac. Upgrade anytime.</p>
+        </div>
+
+        <div class="pricing-panels">
+            <!-- Free -->
+            <div class="pricing-panel">
+                <h3>Free</h3>
+                <div class="price-display">$0</div>
+                <p class="price-desc">Perfect for a quick look around.</p>
+                <a href="#" class="panel-btn outline">Download Free</a>
+                <ul class="panel-features-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> View live system telemetry</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Basic storage mapping</li>
+                    <li class="disabled"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Reveal exact junk file paths</li>
+                    <li class="disabled"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Deep clean developer caches</li>
+                    <li class="disabled"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Strip Universal Binaries</li>
+                </ul>
+            </div>
+            
+            <!-- Pro Yearly -->
+            <div class="pricing-panel">
+                <h3>Pro for a Year</h3>
+                <div class="price-display">$9.99<span class="price-suffix">/yr</span></div>
+                <p class="price-desc">All features, billed annually.</p>
+                <button class="panel-btn outline" onclick="openProModal()">Get 1 Year</button>
+                <ul class="panel-features-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Everything in Free</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Reveal exact junk file paths</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Deep clean developer caches</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Strip Universal Binaries</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> App uninstaller with cleanup</li>
+                </ul>
+            </div>
+
+            <!-- Pro Forever -->
+            <div class="pricing-panel popular">
+                <div class="best-value">MOST POPULAR</div>
+                <h3>Pro Forever</h3>
+                <div class="price-display">$24.99<span class="price-suffix"> one time</span></div>
+                <p class="price-desc">Pay once. Keep it forever.</p>
+                <button class="panel-btn solid" onclick="openProModal()">Get Pro Forever</button>
+                <ul class="panel-features-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Everything in Yearly</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Keep all major updates forever</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> No recurring subscription</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Priority email support</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> 15-day money-back guarantee</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <h2>Questions about Mac Slice</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">What does the free version do?<span class="icon">+</span></button>
+                <div class="faq-answer"><p>The free version allows you to map your entire drive, view live system telemetry, and see how much space is consumed by junk. However, exact file paths and bulk-cleaning features are locked behind Pro.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Why shouldn't I just use macOS's built-in tool?<span class="icon">+</span></button>
+                <div class="faq-answer"><p>The built-in Apple tool is great for basic file deletion, but it doesn't find orphaned developer caches (like pip, node_modules), hidden AI models, or let you surgically strip Universal Binaries to save gigabytes.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is the Architecture Stripper safe?<span class="icon">+</span></button>
+                <div class="faq-answer"><p>Yes. We use standard command-line tools to safely extract the architecture you don't need (e.g., removing Intel code from an Apple Silicon Mac). We ensure critical app signatures remain completely intact.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Are there any recurring fees?<span class="icon">+</span></button>
+                <div class="faq-answer"><p>No. We detest subscription software for utilities. You pay once for the Lifetime License and own all current and future features forever.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Which version should I download, Silicon or Intel?<span class="icon">+</span></button>
+                <div class="faq-answer"><p>Mac Slice is a Universal Binary, meaning the single download works natively and beautifully on both Apple Silicon (M1/M2/M3/M4) and Intel Macs.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Do you offer refunds?<span class="icon">+</span></button>
+                <div class="faq-answer"><p>Yes. If you aren't completely thrilled with the amount of storage Mac Slice reclaims, just email us within 15 days for a hassle-free full refund.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Glow CTA -->
+    <section class="final-glow-cta">
+        <div class="glow-box">
+            <h2>Get your gigabytes<br>back starting at $9.99.</h2>
+            <p>One payment, yours for good. If it doesn't earn its place in<br>15 days, email us for a full refund.</p>
+            <button class="cta-premium-pink large" onclick="openProModal()">Get Mac Slice Pro &rarr;</button>
+            <div class="guarantee-small justify-center mt-3">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                One-time payment &middot; 15-day money-back guarantee
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="assets/mac_slice_logo.png" alt="Mac Slice Logo" style="width: 20px; height: 20px; border-radius: 4px;">
+                    <span>Mac Slice</span>
+                </div>
+                <p class="footer-copyright">&copy; 2026 Mac Slice.<br>Built natively for macOS.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it Works</a>
+                <a href="#" onclick="openProModal()">Pricing</a>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="support.html">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRO MODAL (The Decoy) -->
+    <div class="modal-overlay" id="proModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeProModal()">✕</button>
+            <h3>Choose your license</h3>
+            <p>Select the plan that works best for you.</p>
+            
+            <div class="modal-options">
+                <div class="modal-option">
+                    <h4>Pro for a Year</h4>
+                    <div class="modal-price">$9.99</div>
+                    <p>Billed annually.</p>
+                    <a href="https://pay.lemonSqueezy.com/checkout..." class="modal-btn outline">Select</a>
+                </div>
+                <div class="modal-option highlight">
+                    <div class="best-value">BEST VALUE</div>
+                    <h4>Pro Forever</h4>
+                    <div class="modal-price">$24.99</div>
+                    <p>One-time payment. Yours forever.</p>
+                    <a href="https://pay.lemonSqueezy.com/checkout..." class="modal-btn solid">Select</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GSAP for Apple-like Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
