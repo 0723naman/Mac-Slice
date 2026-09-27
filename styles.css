@@ -295,7 +295,7 @@ body {
 .bento-card p { font-size: 17px; color: var(--text-secondary); }
 .span-2 { grid-column: span 2; }
 .dark-card { background: linear-gradient(145deg, #1a1a1a, #000); border: 1px solid var(--border-color); }
-.dark-card h3, .dark-card p { color: rgba(255, 255, 255, 0.9); }
+.bento-card.dark-card h3, .bento-card.dark-card p, .bento-card.dark-card p strong { color: #ffffff !important; }
 
 /* Competitor Pricing Section (DissectMac Clone) */
 .pricing-premium-section {
