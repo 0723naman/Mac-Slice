@@ -135,12 +135,17 @@ body {
 .buy-btn {
     background: var(--btn-primary-bg);
     color: var(--btn-primary-text) !important;
-    padding: 4px 12px;
-    border-radius: 12px;
+    padding: 8px 16px;
+    border-radius: 16px;
     font-weight: 500;
     border: none;
     cursor: pointer;
     font-family: 'Inter';
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }
 
 /* Hero Section */
