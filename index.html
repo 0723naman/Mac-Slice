@@ -12,6 +12,15 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Paddle.js Setup (Live) -->
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <script>
+        Paddle.Environment.set('production');
+        Paddle.Initialize({
+            token: 'live_b4e3250e65306d0ab2d60a8bc06'
+        });
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -24,14 +33,14 @@
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How it Works</a>
-                <a href="blog.html">Blog</a>
+                <a href="/blog">Blog</a>
                 <a href="#pro">Pricing</a>
                 <a href="#faq">FAQ</a>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
                     <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                </button>
-                <button class="buy-btn" onclick="openProModal()">Get Pro</button>
+                </a>
+                <a class="buy-btn" href="/pricing">Get Pro</a>
             </div>
         </div>
     </nav>
@@ -50,7 +59,7 @@
             <p class="hero-subtitle">Visualize your entire file system in seconds, strip out hidden bloated architecture, and instantly reclaim gigabytes of space with absolute precision.</p>
             <div class="hero-cta-group">
                 <a href="#" class="cta-primary">Download for free</a>
-                <button class="cta-primary cta-premium" onclick="openProModal()">Get Pro</button>
+                <a class="cta-primary cta-premium"  href="/pricing">Get Pro</a>
             </div>
             <p class="hero-meta">Requires macOS 13.0 or later. Built exclusively for Apple Silicon and Intel.</p>
         </div>
@@ -189,88 +198,34 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-premium-section" id="pro">
-        <div class="pricing-header">
-            <h2>One tool. Three ways to slice it.</h2>
-            <p>Choose the plan that fits your Mac. Upgrade anytime.</p>
-        </div>
-
-        <div class="pricing-panels">
-            <!-- Free -->
-            <div class="pricing-panel">
-                <h3>Free</h3>
-                <div class="price-display">$0</div>
-                <p class="price-desc">Perfect for a quick look around.</p>
-                <a href="#" class="panel-btn outline">Download Free</a>
-                <ul class="panel-features-list">
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> View live system telemetry</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Basic storage mapping</li>
-                    <li class="disabled"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Reveal exact junk file paths</li>
-                    <li class="disabled"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Deep clean developer caches</li>
-                    <li class="disabled"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Strip Universal Binaries</li>
-                </ul>
-            </div>
-            
-            <!-- Pro Yearly -->
-            <div class="pricing-panel">
-                <h3>Pro for a Year</h3>
-                <div class="price-display">$9.99<span class="price-suffix">/yr</span></div>
-                <p class="price-desc">All features, billed annually.</p>
-                <button class="panel-btn outline" onclick="openProModal()">Get 1 Year</button>
-                <ul class="panel-features-list">
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Everything in Free</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Reveal exact junk file paths</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Deep clean developer caches</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Strip Universal Binaries</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> App uninstaller with cleanup</li>
-                </ul>
-            </div>
-
-            <!-- Pro Forever -->
-            <div class="pricing-panel popular">
-                <div class="best-value">MOST POPULAR</div>
-                <h3>Pro Forever</h3>
-                <div class="price-display">$24.99<span class="price-suffix"> one time</span></div>
-                <p class="price-desc">Pay once. Keep it forever.</p>
-                <button class="panel-btn solid" onclick="openProModal()">Get Pro Forever</button>
-                <ul class="panel-features-list">
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Everything in Yearly</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Keep all major updates forever</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> No recurring subscription</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> Priority email support</li>
-                    <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"></path></svg> 15-day money-back guarantee</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- FAQ Section -->
     <section class="faq-section" id="faq">
         <h2>Questions about Mac Slice</h2>
         <div class="faq-container">
             <div class="faq-item">
-                <button class="faq-question">What does the free version do?<span class="icon">+</span></button>
+                <button class="faq-question">What does the free version do?<span class="icon">+</span></a>
                 <div class="faq-answer"><p>The free version allows you to map your entire drive, view live system telemetry, and see how much space is consumed by junk. However, exact file paths and bulk-cleaning features are locked behind Pro.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Why shouldn't I just use macOS's built-in tool?<span class="icon">+</span></button>
+                <button class="faq-question">Why shouldn't I just use macOS's built-in tool?<span class="icon">+</span></a>
                 <div class="faq-answer"><p>The built-in Apple tool is great for basic file deletion, but it doesn't find orphaned developer caches (like pip, node_modules), hidden AI models, or let you surgically strip Universal Binaries to save gigabytes.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Is the Architecture Stripper safe?<span class="icon">+</span></button>
+                <button class="faq-question">Is the Architecture Stripper safe?<span class="icon">+</span></a>
                 <div class="faq-answer"><p>Yes. We use standard command-line tools to safely extract the architecture you don't need (e.g., removing Intel code from an Apple Silicon Mac). We ensure critical app signatures remain completely intact.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Are there any recurring fees?<span class="icon">+</span></button>
+                <button class="faq-question">Are there any recurring fees?<span class="icon">+</span></a>
                 <div class="faq-answer"><p>No. We detest subscription software for utilities. You pay once for the Lifetime License and own all current and future features forever.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Which version should I download, Silicon or Intel?<span class="icon">+</span></button>
+                <button class="faq-question">Which version should I download, Silicon or Intel?<span class="icon">+</span></a>
                 <div class="faq-answer"><p>Mac Slice is a Universal Binary, meaning the single download works natively and beautifully on both Apple Silicon (M1/M2/M3/M4) and Intel Macs.</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Do you offer refunds?<span class="icon">+</span></button>
+                <button class="faq-question">Do you offer refunds?<span class="icon">+</span></a>
                 <div class="faq-answer"><p>Yes. If you aren't completely thrilled with the amount of storage Mac Slice reclaims, just email us within 15 days for a hassle-free full refund.</p></div>
             </div>
         </div>
@@ -281,7 +236,7 @@
         <div class="glow-box">
             <h2>Get your gigabytes<br>back starting at $9.99.</h2>
             <p>One payment, yours for good. If it doesn't earn its place in<br>15 days, email us for a full refund.</p>
-            <button class="cta-premium-pink large" onclick="openProModal()">Get Mac Slice Pro &rarr;</button>
+            <a class="cta-premium-pink large"  href="/pricing">Get Mac Slice Pro &rarr;</a>
             <div class="guarantee-small justify-center mt-3">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
                 One-time payment &middot; 15-day money-back guarantee
@@ -304,40 +259,20 @@
                 <h4>Product</h4>
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How it Works</a>
-                <a href="#" onclick="openProModal()">Pricing</a>
+                <a href="#" >Pricing</a>
             </div>
             
             <div class="footer-col">
                 <h4>Legal</h4>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="support.html">Contact Support</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/refunds">Refund Policy</a>
+                <a href="/support">Contact Support</a>
             </div>
         </div>
     </footer>
 
-    <!-- PRO MODAL (The Decoy) -->
-    <div class="modal-overlay" id="proModal">
-        <div class="modal-card">
-            <button class="modal-close" onclick="closeProModal()">✕</button>
-            <h3>Choose your license</h3>
-            <p>Select the plan that works best for you.</p>
-            
-            <div class="modal-options">
-                <div class="modal-option">
-                    <h4>Pro for a Year</h4>
-                    <div class="modal-price">$9.99</div>
-                    <p>Billed annually.</p>
-                    <a href="#" class="modal-btn outline">Select</a>
-                </div>
-                <div class="modal-option highlight">
-                    <div class="best-value">BEST VALUE</div>
-                    <h4>Pro Forever</h4>
-                    <div class="modal-price">$24.99</div>
-                    <p>One-time payment. Yours forever.</p>
-                    <a href="#" class="modal-btn solid">Select</a>
-                </div>
-            </div>
+    
         </div>
     </div>
 

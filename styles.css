@@ -1089,3 +1089,63 @@ footer {
     background: #0077ed;
 }
 
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-content { padding: 0 16px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { display: none; } /* Hide text links to save space */
+    .buy-btn { padding: 6px 14px; font-size: 13px; }
+    
+    /* Hero */
+    .hero { padding-top: 100px; min-height: auto; padding-bottom: 40px; overflow: hidden; }
+    .hero-title { font-size: clamp(30px, 8.5vw, 40px); }
+    .hero-subtitle { font-size: 17px; margin-bottom: 24px; padding: 0 10px; }
+    .hero-cta-group { flex-direction: column; width: 100%; padding: 0 20px; }
+    .cta-primary, .cta-premium { width: 100%; font-size: 16px; padding: 16px; text-align: center; }
+    
+    /* Statement */
+    .statement-section { padding: 80px 20px; }
+    .statement-content h2 { font-size: 32px; }
+    .statement-content p { font-size: 18px; }
+    
+    /* Features */
+    .feature-section { flex-direction: column !important; margin: 80px auto; padding: 0 20px; gap: 40px; }
+    .feature-text, .feature-image-wrapper { width: 100%; }
+    .feature-title { font-size: 36px; }
+    
+    /* Bento */
+    .bento-section { margin: 80px auto; padding: 0 20px; }
+    .bento-header h2 { font-size: 36px; }
+    .bento-grid { grid-template-columns: 1fr; auto-rows: auto; }
+    .span-2 { grid-column: span 1; }
+    .bento-card { padding: 24px; min-height: 200px; }
+    
+    /* How it works */
+    .how-it-works-section { margin: 80px auto; padding: 0 20px; }
+    .how-it-works-header h2 { font-size: 36px; }
+    .steps-container { flex-direction: column; gap: 24px; }
+    
+    /* Pricing */
+    .pricing-premium-section { padding: 80px 20px; }
+    .pricing-header h2 { font-size: 36px; }
+    .pricing-panels { grid-template-columns: 1fr; }
+    .pricing-panel.popular { transform: scale(1); border: 2px solid rgba(255, 0, 85, 0.4); }
+    
+    /* Blog */
+    .blog-grid { grid-template-columns: 1fr; padding: 0 20px; }
+    .blog-hero { padding: 100px 20px 40px; }
+    .blog-hero h1 { font-size: 40px; }
+    
+    /* Article Layout */
+    .article-layout { flex-direction: column; padding: 0 20px; gap: 40px; }
+    .article-sidebar { width: 100%; }
+    .sidebar-sticky { position: relative; top: 0; }
+    .inline-cta { flex-direction: column; text-align: center; }
+    .inline-cta .cta-text { padding-right: 0; margin-bottom: 20px; }
+    
+    /* Footer */
+    .footer-content { flex-direction: column; gap: 40px; text-align: center; }
+    .footer-section { min-width: 100%; }
+    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+}
