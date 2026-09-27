@@ -683,6 +683,8 @@ footer {
     text-align: center;
     width: 100%;
     white-space: nowrap;
+    padding: 0 10px;
+    margin: 0 -10px;
 }
 .rotating-text {
     position: absolute;
