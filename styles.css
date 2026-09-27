@@ -295,6 +295,7 @@ body {
 .bento-card p { font-size: 17px; color: var(--text-secondary); }
 .span-2 { grid-column: span 2; }
 .dark-card { background: linear-gradient(145deg, #1a1a1a, #000); border: 1px solid var(--border-color); }
+.dark-card h3, .dark-card p { color: rgba(255, 255, 255, 0.9); }
 
 /* Competitor Pricing Section (DissectMac Clone) */
 .pricing-premium-section {
@@ -341,6 +342,14 @@ body {
     transform: scale(1.05);
 }
 
+.pricing-panel.popular h3,
+.pricing-panel.popular .price-display,
+.pricing-panel.popular .price-desc,
+.pricing-panel.popular .panel-features-list li,
+.pricing-panel.popular .price-suffix {
+    color: rgba(255, 255, 255, 0.95);
+}
+
 .pricing-panel h3 {
     font-size: 20px;
     font-weight: 600;
@@ -376,7 +385,7 @@ body {
 
 .panel-btn.solid {
     background: var(--premium-pink);
-    color: var(--text-primary);
+    color: #ffffff;
     border: none;
 }
 .panel-btn.solid:hover { background: #e0004c; }
