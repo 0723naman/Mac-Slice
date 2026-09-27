@@ -682,7 +682,6 @@ footer {
     clip-path: inset(0 -20px);
     vertical-align: bottom;
     text-align: center;
-    width: 100%;
     white-space: nowrap;
 }
 .rotating-text {
