@@ -187,34 +187,3 @@ document.getElementById('proModal').addEventListener('click', function(e) {
         closeProModal();
     }
 });
-
-// Theme Toggle Logic
-const themeToggle = document.getElementById('theme-toggle');
-const sunIcon = document.querySelector('.sun-icon');
-const moonIcon = document.querySelector('.moon-icon');
-
-// Check for saved user preference, if any, on load of the website
-const currentTheme = localStorage.getItem('theme') || 'dark';
-document.documentElement.setAttribute('data-theme', currentTheme);
-updateThemeIcon(currentTheme);
-
-themeToggle.addEventListener('click', () => {
-    let targetTheme = 'light';
-    if (document.documentElement.getAttribute('data-theme') === 'light') {
-        targetTheme = 'dark';
-    }
-    
-    document.documentElement.setAttribute('data-theme', targetTheme);
-    localStorage.setItem('theme', targetTheme);
-    updateThemeIcon(targetTheme);
-});
-
-function updateThemeIcon(theme) {
-    if (theme === 'light') {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
-    } else {
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
-    }
-}
