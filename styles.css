@@ -1144,10 +1144,11 @@ footer {
     .bento-card { padding: 24px; min-height: 200px; }
     
     /* How it works */
-    .how-it-works-section { margin: 80px auto; padding: 0 20px; }
+    .how-it-works-section { padding: 80px 20px; margin: 0 auto; }
     .how-it-works-header h2 { font-size: 36px; }
-    .steps-container { flex-direction: column; gap: 24px; }
-    
+    .steps-container { grid-template-columns: 1fr; gap: 24px; }
+    .step-box { padding: 24px; }
+    .step-number { font-size: 48px; top: 16px; right: 16px; }    
     /* Pricing */
     .pricing-premium-section { padding: 80px 20px; }
     .pricing-header h2 { font-size: 36px; }
