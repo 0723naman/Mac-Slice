@@ -670,9 +670,7 @@ footer {
     top: 0; left: 0; right: 0;
     opacity: 0;
     transform: translateY(100%);
-    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--hero-text);
     padding-bottom: 10px; /* Extra room for descending letters like g, p */
     white-space: nowrap;
 }
@@ -715,9 +713,7 @@ footer {
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--hero-text);
 }
 
 .blog-index-header p {
