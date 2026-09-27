@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Free Up Gigabytes of "System Data" on Mac</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Lemon Squeezy -->
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: white;">
+                    <img src="assets/mac_slice_logo.png" alt="Mac Slice Logo" style="width: 28px; height: 28px; border-radius: 6px;">
+                    <span>Mac Slice</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How it Works</a>
+                <a href="blog.html" style="color: var(--text-primary);">Blog</a>
+                <a href="index.html#pro">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="index.html#pro" class="buy-btn">Get Pro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <main class="article-container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs">
+            <a href="blog.html">Guides</a>
+            <span>/</span>
+            <a href="#">Storage</a>
+        </nav>
+
+        <header class="article-header">
+            <h1>How to Free Up Gigabytes of "System Data" on Mac</h1>
+            <p class="subtitle">Is your Mac's storage bar filled with grey "System Data"? Learn exactly what it is, where it hides, and how to safely delete it to reclaim massive space.</p>
+            <div class="article-meta">
+                <div class="author-badge">K</div>
+                <span>Kapil</span>
+                <span class="dot">•</span>
+                <span>Updated Sep 25, 2026</span>
+                <span class="dot">•</span>
+                <span>6 min read</span>
+            </div>
+        </header>
+
+        <div class="article-hero-image">
+            <img src="assets/screenshots/real_hero_image.png" alt="Mac Slice showing System Data visualization">
+        </div>
+
+        <div class="article-body">
+            <div class="prose">
+                <p>Open System Settings > General > Storage, and you'll probably see a massive grey bar labeled "System Data". For many Mac users, this mysterious category takes up 50GB, 100GB, or even more space, leaving no room for actual files.</p>
+                
+                <p>Unlike Documents or Apps, macOS doesn't give you a simple button to delete System Data. This guide explains what System Data actually is, and the manual steps you can take to safely clear it out.</p>
+
+                <aside class="inline-cta">
+                    <div class="cta-content">
+                        <h3>Find hidden System Data instantly</h3>
+                        <p>Mac Slice draws a gorgeous sunburst visualization of your entire hard drive. You can literally click on the largest folders in your hidden Library and delete them securely.</p>
+                        <a href="https://macslice.lemonsqueezy.com/checkout/buy/4ff2da82-a116-4d95-9181-1469d0aa4f95" class="cta-btn lemonsqueezy-button">Get Mac Slice Pro · $9.99/yr</a>
+                        <p class="cta-guarantee">✓ 15-day money-back guarantee</p>
+                    </div>
+                    <div class="cta-image">
+                        <img src="assets/screenshots/real_hero_image.png" alt="Mac Slice interface">
+                    </div>
+                </aside>
+
+                <h2>What exactly is System Data?</h2>
+                <p>System Data is Apple's catch-all category for anything that doesn't fit into neatly defined buckets like Apps, Photos, or Documents. It primarily consists of files sitting in your hidden <code>~/Library</code> folder. Common culprits include:</p>
+                <ul>
+                    <li><strong>App Caches:</strong> Browsers, Spotify, and developer tools cache gigabytes of data to load faster.</li>
+                    <li><strong>Application Support:</strong> Folders created by apps that contain massive data sets (like Steam games or Docker containers).</li>
+                    <li><strong>Leftover App Residue:</strong> When you drag an app to the Trash, its hidden configuration files stay behind forever.</li>
+                    <li><strong>iOS Device Backups:</strong> Old iPhone or iPad backups made through Finder.</li>
+                    <li><strong>Time Machine Local Snapshots:</strong> Temporary backups saved directly to your hard drive when your external drive isn't connected.</li>
+                </ul>
+
+                <h2>How to clear System Data manually</h2>
+                
+                <h3>1. Delete Local Time Machine Snapshots</h3>
+                <p>macOS keeps local snapshots of your files so you can recover them even if your Time Machine drive is unplugged. They usually delete themselves, but sometimes they get stuck.</p>
+                <p>To clear them, open Terminal and run <code>tmutil listlocalsnapshots /</code>. If you see dozens of entries, you can run <code>sudo tmutil thinlocalsnapshots / 10000000000 4</code> to aggressively clear them out.</p>
+
+                <h3>2. Clean out old iOS Backups</h3>
+                <p>If you've ever backed up your iPhone to your Mac, those backups are massive. Go to <strong>System Settings > General > Storage > iOS Files</strong>. You can safely delete old backups right from there.</p>
+
+                <h3>3. Hunt down massive App Caches</h3>
+                <p>Open Finder, click <strong>Go > Go to Folder...</strong> and type <code>~/Library/Caches</code>. Press Enter. This folder is completely safe to delete. Select everything inside it and drag it to the Trash. The next time you open your apps, they will simply rebuild the caches they actually need.</p>
+
+                <h3>4. Check Application Support</h3>
+                <p>Navigate to <code>~/Library/Application Support</code>. Look for folders named after apps you uninstalled months ago. Delete them. Be careful not to delete folders for apps you currently use, as this will reset their settings.</p>
+
+                <aside class="inline-cta">
+                    <div class="cta-content">
+                        <h3>The faster, safer way</h3>
+                        <p>Instead of digging through hidden Finder folders, Mac Slice's visual interface shows you exactly which folders are taking up the most space, so you can delete them in seconds.</p>
+                        <a href="https://macslice.lemonsqueezy.com/checkout/buy/81fc4edd-a9a9-46c4-a9d3-5712d9bc019e" class="cta-btn solid lemonsqueezy-button">Get Lifetime License · $24.99</a>
+                    </div>
+                </aside>
+            </div>
+            
+            <div class="article-sidebar">
+                <div class="sidebar-sticky">
+                    <div class="sidebar-card">
+                        <img src="assets/screenshots/real_hero_image.png" alt="Mac Slice UI">
+                        <div class="sidebar-card-content">
+                            <h4>Mac Slice</h4>
+                            <p>See every folder on your Mac drawn to scale, then clear what you don't need.</p>
+                            <a href="https://macslice.lemonsqueezy.com/checkout/buy/4ff2da82-a116-4d95-9181-1469d0aa4f95" class="sidebar-btn lemonsqueezy-button">Get Pro · $9.99/yr</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Mac Slice</h4>
+                <p>Visualize and optimize your Mac storage in seconds with absolute precision.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How it Works</a>
+                <a href="index.html#pro">Pricing</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="support.html">Contact Support</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mac Slice. All rights reserved. Made for Mac users.</p>
+        </div>
+    </footer>
+</body>
+</html>
