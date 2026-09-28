@@ -222,3 +222,30 @@ document.getElementById('proModal').addEventListener('click', function(e) {
         closeProModal();
     }
 });
+
+// DataFast DodoPayments Attribution
+document.addEventListener("DOMContentLoaded", () => {
+    const checkoutLinks = document.querySelectorAll('a[href^="https://checkout.dodopayments.com"]');
+    checkoutLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Get DataFast cookie
+            function getCookie(name) {
+                let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                if (match) return match[2];
+                return null;
+            }
+            
+            const dfVisitorId = getCookie('datafast_visitor_id');
+            const url = new URL(link.href);
+            
+            if (dfVisitorId) {
+                // Append it as metadata in the query string
+                url.searchParams.set('metadata_datafast_visitor_id', dfVisitorId);
+            }
+            
+            window.location.href = url.toString();
+        });
+    });
+});
