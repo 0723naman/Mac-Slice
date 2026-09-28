@@ -1,10 +1,12 @@
+import { kv } from '@vercel/kv';
+
 export default async function handler(req, res) {
   // Only allow GET requests
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { txn } = req.query;
+  const { txn, machineId } = req.query;
 
   if (!txn) {
     return res.status(400).json({ error: 'Invalid transaction ID format.' });
@@ -39,6 +41,27 @@ export default async function handler(req, res) {
       
       // For payments, status should be 'succeeded'. For subscriptions, status should be 'active'
       if (data.status === 'succeeded' || data.status === 'active' || data.status === 'paid' || data.status === 'captured') {
+        
+        // --- LICENSE BINDING LOGIC ---
+        if (machineId && process.env.KV_REST_API_URL) {
+          const claimedMachine = await kv.get(txn);
+          
+          if (claimedMachine) {
+            // Already claimed by someone
+            if (claimedMachine !== machineId) {
+              return res.status(403).json({ 
+                success: false, 
+                error: 'This License Key has already been activated on another Mac. One license per machine.' 
+              });
+            }
+          } else {
+            // First time use! Claim it for this machine forever.
+            await kv.set(txn, machineId);
+          }
+        } else if (machineId && !process.env.KV_REST_API_URL) {
+          console.warn("Vercel KV is not configured. License sharing prevention is currently inactive.");
+        }
+
         return res.status(200).json({ 
           success: true, 
           message: 'Dodo Payments License verified.', 
