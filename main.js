@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    // Set initial theme
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    // Set initial theme (force light mode by default)
+    if (savedTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
         sunIcon.style.display = 'block';
         moonIcon.style.display = 'none';
