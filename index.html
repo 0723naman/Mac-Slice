@@ -212,46 +212,7 @@
                 <source src="assets/mac_slice_demo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            
-            <style>
-            .video-waves {
-                position: absolute;
-                bottom: -1px;
-                left: 0;
-                width: 100%;
-                height: 70px;
-                overflow: hidden;
-                pointer-events: none;
-                z-index: 10;
-            }
-            .video-waves svg {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 200%;
-                height: 100%;
-            }
-            .wave1 {
-                animation: moveWaves 12s linear infinite;
-            }
-            .wave2 {
-                animation: moveWaves 7s linear infinite;
-            }
-            @keyframes moveWaves {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            </style>
-            <div class="video-waves">
-                <!-- Back wave -->
-                <svg class="wave1" viewBox="0 0 2400 120" preserveAspectRatio="none">
-                    <path d="M0,70 Q300,10 600,70 T1200,70 T1800,70 T2400,70 L2400,120 L0,120 Z" fill="var(--bg-color)" opacity="0.6" />
-                </svg>
-                <!-- Front wave -->
-                <svg class="wave2" viewBox="0 0 2400 120" preserveAspectRatio="none">
-                    <path d="M0,90 Q300,50 600,90 T1200,90 T1800,90 T2400,90 L2400,120 L0,120 Z" fill="var(--bg-color)" />
-                </svg>
-            </div>
+
         </div>
 
         <div class="steps-container">
