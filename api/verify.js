@@ -10,93 +10,50 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid transaction ID format.' });
   }
 
-  // --- RAZORPAY SUBSCRIPTIONS (sub_...) AND PAYMENTS (pay_...) ---
-  if (txn.startsWith('sub_') || txn.startsWith('pay_')) {
-    const RZP_KEY = process.env.RAZORPAY_KEY_ID;
-    const RZP_SECRET = process.env.RAZORPAY_KEY_SECRET;
+  // --- DODO PAYMENTS (pay_... or sub_...) ---
+  if (txn.startsWith('pay_') || txn.startsWith('sub_')) {
+    const DODO_KEY = process.env.DODO_PAYMENTS_API_KEY;
 
-    if (!RZP_KEY || !RZP_SECRET) {
-      return res.status(500).json({ error: 'Server misconfiguration: Missing Razorpay API Keys.' });
+    if (!DODO_KEY) {
+      return res.status(500).json({ error: 'Server misconfiguration: Missing Dodo Payments API Key.' });
     }
-
-    const auth = Buffer.from(`${RZP_KEY}:${RZP_SECRET}`).toString('base64');
     
     try {
-      let url = `https://api.razorpay.com/v1/payments/${txn}`;
+      let url = `https://api.dodopayments.com/payments/${txn}`;
       if (txn.startsWith('sub_')) {
-        url = `https://api.razorpay.com/v1/subscriptions/${txn}`;
+        url = `https://api.dodopayments.com/subscriptions/${txn}`;
       }
 
-      const rzpRes = await fetch(url, {
+      const dodoRes = await fetch(url, {
         headers: {
-          'Authorization': `Basic ${auth}`,
+          'Authorization': `Bearer ${DODO_KEY}`,
           'Content-Type': 'application/json'
         }
       });
 
-      if (!rzpRes.ok) {
-        return res.status(404).json({ error: 'Transaction or Subscription not found in Razorpay.' });
+      if (!dodoRes.ok) {
+        return res.status(404).json({ error: 'Transaction or Subscription not found in Dodo Payments.' });
       }
 
-      const data = await rzpRes.json();
+      const data = await dodoRes.json();
       
-      // For payments, status should be 'captured'. For subscriptions, status should be 'active' or 'authenticated'
-      if (data.status === 'captured' || data.status === 'active' || data.status === 'authenticated') {
+      // For payments, status should be 'succeeded'. For subscriptions, status should be 'active'
+      if (data.status === 'succeeded' || data.status === 'active' || data.status === 'paid' || data.status === 'captured') {
         return res.status(200).json({ 
           success: true, 
-          message: 'Razorpay License verified.', 
+          message: 'Dodo Payments License verified.', 
           status: data.status 
         });
       } else {
         return res.status(400).json({ 
           success: false, 
-          error: `Razorpay status is: ${data.status}. It must be captured or active to unlock Pro.` 
+          error: `Payment status is: ${data.status}. It must be successfully paid to unlock Pro.` 
         });
       }
     } catch (error) {
-      return res.status(500).json({ error: 'Internal server error verifying Razorpay.' });
+      return res.status(500).json({ error: 'Internal server error verifying Dodo Payments.' });
     }
   }
 
-  // --- PADDLE TRANSACTIONS (txn_...) ---
-  if (txn.startsWith('txn_') || txn.startsWith('trans_')) {
-    const PADDLE_API_KEY = process.env.PADDLE_LIVE_API_KEY;
-
-    if (!PADDLE_API_KEY) {
-      return res.status(500).json({ error: 'Server misconfiguration: Missing Paddle API Key.' });
-    }
-
-    try {
-      const paddleRes = await fetch(`https://api.paddle.com/transactions/${txn}`, {
-        headers: {
-          'Authorization': `Bearer ${PADDLE_API_KEY}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!paddleRes.ok) {
-        return res.status(404).json({ error: 'Transaction not found in Paddle.' });
-      }
-
-      const data = await paddleRes.json();
-      const transaction = data.data;
-
-      if (transaction.status === 'completed') {
-        return res.status(200).json({ 
-          success: true, 
-          message: 'Paddle License verified.', 
-          status: transaction.status
-        });
-      } else {
-        return res.status(400).json({ 
-          success: false, 
-          error: `Paddle transaction is in status: ${transaction.status}. It must be completed to unlock Pro.` 
-        });
-      }
-    } catch (error) {
-      return res.status(500).json({ error: 'Internal server error verifying Paddle.' });
-    }
-  }
-
-  return res.status(400).json({ error: 'Invalid ID format. Must start with txn_, pay_, or sub_' });
+  return res.status(400).json({ error: 'Invalid ID format. Must start with pay_ or sub_' });
 }
