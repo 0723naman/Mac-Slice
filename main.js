@@ -1,5 +1,7 @@
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+// Register ScrollTrigger plugin if gsap is loaded
+if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 // Hero Initial Load Animation
 document.addEventListener("DOMContentLoaded", () => {
@@ -39,6 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    if (typeof gsap === 'undefined') return;
+    
     // Timeline for the hero section
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
