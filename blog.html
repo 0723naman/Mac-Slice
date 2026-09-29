@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purchase Successful - Mac Slice</title>
+    <title>Blog - Mac Slice</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .legal-content { max-width: 800px; margin: 150px auto; padding: 0 20px; color: var(--text-secondary); line-height: 1.6; }
+        .legal-content h1 { color: var(--text-primary); margin-bottom: 20px; font-size: 40px; }
+        .legal-content h2 { color: var(--text-primary); margin-top: 40px; margin-bottom: 16px; }
+        .legal-content p { margin-bottom: 16px; }
+    </style>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/mac_slice_logo.png">
     
@@ -33,12 +39,12 @@
     </script>
 
     <!-- SEO & Open Graph -->
-    <link rel="canonical" href="https://www.macslice.online/success" />
-    <meta property="og:url" content="https://www.macslice.online/success" />
+    <link rel="canonical" href="https://www.macslice.online/blog" />
+    <meta property="og:url" content="https://www.macslice.online/blog" />
     <meta property="og:type" content="website" />
 </head>
 <body>
-    <nav class="navbar">
+        <nav class="navbar">
         <div class="nav-content">
             <div class="logo">
                 <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
@@ -62,43 +68,9 @@
         </div>
     </nav>
 
-    <!-- Success Section -->
-    <section class="pricing-premium-section" style="padding-top: 150px; min-height: 80vh;">
-        <div class="pricing-header">
-            <h1 class="pricing-title">Payment Successful! 🎉</h1>
-            <p class="pricing-subtitle" style="max-width: 600px; margin: 0 auto;">Welcome to Mac Slice Pro. Your account has been upgraded.</p>
-        </div>
-        
-        <div style="max-width: 600px; margin: 40px auto; background: var(--card-bg); padding: 40px; border-radius: 24px; border: 1px solid var(--border-color); text-align: center;">
-            <div style="width: 64px; height: 64px; background: rgba(52, 199, 89, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px auto;">
-                <svg viewBox="0 0 24 24" width="32" height="32" stroke="#34C759" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            
-            <h2 style="font-size: 24px; margin-bottom: 16px; color: var(--text-primary);">Your License Key is your Order ID</h2>
-            
-            <div style="background: rgba(255, 41, 117, 0.1); border: 2px dashed var(--accent); padding: 20px; border-radius: 12px; margin-bottom: 24px;">
-                <code id="license-key-display" style="font-size: 22px; font-weight: 700; color: var(--accent); font-family: monospace; user-select: all; word-break: break-all;">Check your email receipt for your Order ID (starts with pay_ or sub_)</code>
-            </div>
-            
-            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
-                <strong>How to activate:</strong><br>
-                1. Open the Mac Slice app on your Mac.<br>
-                2. Click "Upgrade to Pro" in the bottom left corner.<br>
-                3. Paste your Order ID (e.g. <code>pay_XXXXXXXX</code>) into the box and click Unlock.
-            </p>
-            
-            <script>
-                // Try to extract the payment ID from Dodo's redirect URL query parameters
-                const params = new URLSearchParams(window.location.search);
-                const paymentId = params.get('payment_id') || params.get('session_id');
-                if (paymentId) {
-                    document.getElementById('license-key-display').innerText = paymentId;
-                }
-            </script>
-            
-            <a href="/" class="cta-primary">Back to Home</a>
-        </div>
-    </section>
+    <div class="legal-content" style="display:flex; justify-content:center; align-items:center; height:60vh; font-size:1.5rem; font-weight:500;">
+        Welcome to our new Blog! Content coming soon.
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -118,7 +90,6 @@
             </div>
         </div>
     </footer>
-    
     <script src="main.js"></script>
 </body>
 </html>
