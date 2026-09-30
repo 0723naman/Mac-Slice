@@ -1123,6 +1123,9 @@ footer {
 }
 
 /* --- Mobile Responsiveness --- */
+.mobile-only-video { display: none; }
+.buy-btn-mobile { display: none !important; }
+
 .mobile-menu-btn {
     display: none;
     background: transparent;
@@ -1138,15 +1141,18 @@ footer {
 
 @media (max-width: 768px) {
     /* Navigation */
+    .mobile-only-video { display: block; }
+    .buy-btn-mobile { display: inline-block !important; margin: 12px auto; text-align: center; }
+    
     .nav-content { 
         display: flex;
         justify-content: space-between;
         padding: 0 16px; 
         width: 100%;
     }
-    .buy-btn { padding: 8px 16px; font-size: 13px; margin-right: 8px; order: 1; }
     
     .nav-actions { display: flex; align-items: center; justify-content: flex-end; }
+    .nav-actions > .buy-btn { display: none !important; }
     .nav-actions > .theme-toggle { display: none !important; }
     .mobile-menu-btn { display: flex; align-items: center; justify-content: center; order: 2; }
     
