@@ -82,8 +82,8 @@
         .blog-content li { margin-bottom: 10px; }
         .blog-content a { color: var(--accent); text-decoration: none; }
         .blog-content a:hover { text-decoration: underline; }
-        .blog-content code { background: #ffffff; padding: 4px 8px; border-radius: 6px; color: #1d1d1f; font-size: 15px; border: 1px solid var(--border-color); font-family: monospace; word-wrap: break-word; overflow-wrap: break-word; word-break: break-all; }
-        .blog-content pre code { display: block; padding: 16px; background: #ffffff; color: #1d1d1f; overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 24px; font-family: monospace; }
+        .blog-content code { background: #ffffff; padding: 4px 8px; border-radius: 6px; color: #1da31d; font-size: 15px; border: 1px solid var(--border-color); font-family: monospace; word-wrap: break-word; overflow-wrap: break-word; word-break: break-all; }
+        .blog-content pre code { display: block; padding: 16px; background: #ffffff; color: #1da31d; overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 24px; font-family: monospace; }
         [data-theme="dark"] .blog-content code, [data-theme="dark"] .blog-content pre code { background: #1e1e1e; color: #4af626; border-color: #333; }
         .blog-content table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 16px; }
         .blog-content th, .blog-content td { text-align: left; padding: 16px; border-bottom: 1px solid var(--border-color); }
@@ -178,8 +178,10 @@
         
         .comments-area h4 { font-size: 20px; color: var(--text-primary); margin-bottom: 20px; }
         .comment-input-box { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-        .comment-input-box textarea { width: 100%; box-sizing: border-box; min-height: 80px; padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); font-family: inherit; resize: vertical; }
-        .comment-input-box textarea:focus { outline: none; border-color: var(--accent); }
+        .comment-input-box textarea, .comment-input-box input { width: 100%; box-sizing: border-box; padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); font-family: inherit; }
+        .comment-input-box input { padding: 12px 16px; margin-bottom: -4px; font-size: 15px; }
+        .comment-input-box textarea { min-height: 80px; resize: vertical; }
+        .comment-input-box textarea:focus, .comment-input-box input:focus { outline: none; border-color: var(--accent); }
         .comment-input-box .btn-primary { align-self: flex-end; padding: 10px 24px; font-size: 14px; }
         
         .mock-comment { display: flex; gap: 16px; margin-bottom: 24px; }
@@ -479,6 +481,7 @@
                     <div class="comments-area">
                         <h4 id="comments-count-title">Comments (3)</h4>
                         <div class="comment-input-box">
+                            <input type="text" id="live-comment-name" placeholder="Your name (required)">
                             <textarea id="live-comment-input" placeholder="Add a public comment..."></textarea>
                             <button class="btn-primary" onclick="postLiveComment()">Post</button>
                         </div>
@@ -486,21 +489,21 @@
                         <div class="mock-comment">
                             <div class="mock-comment-avatar">A</div>
                             <div class="mock-comment-content">
-                                <h5>Alex M. <span>2 hours ago</span></h5>
+                                <h5>Alex M. <span>43 minutes ago</span></h5>
                                 <p>This guide was exactly what I needed! I managed to clear 40GB of old Xcode caches that I didn't even know existed. Thank you!</p>
                             </div>
                         </div>
                         <div class="mock-comment">
                             <div class="mock-comment-avatar">S</div>
                             <div class="mock-comment-content">
-                                <h5>Sarah Jenkins <span>4 hours ago</span></h5>
+                                <h5>Sarah Jenkins <span>3 hours ago</span></h5>
                                 <p>I was terrified of deleting System Data but your explanation made it super clear. Mac is running much smoother now.</p>
                             </div>
                         </div>
                         <div class="mock-comment">
                             <div class="mock-comment-avatar">P</div>
                             <div class="mock-comment-content">
-                                <h5>Priya S. <span>6 hours ago</span></h5>
+                                <h5>Priya S. <span>11 hours ago</span></h5>
                                 <p>Thank you! Finally found what was eating up my 256GB Mac. I had 60GB of old Xcode simulators sitting there doing nothing.</p>
                             </div>
                         </div>
@@ -587,15 +590,26 @@
         });
 
         function postLiveComment() {
+            const nameInput = document.getElementById('live-comment-name');
             const input = document.getElementById('live-comment-input');
+            const name = nameInput.value.trim();
             const text = input.value.trim();
+            
+            if (!name) {
+                alert('Please enter your name.');
+                nameInput.focus();
+                return;
+            }
             if (!text) return;
+            
+            const firstLetter = name.charAt(0).toUpperCase();
+            const safeName = name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
             
             const commentHTML = `
                 <div class="mock-comment">
-                    <div class="mock-comment-avatar">U</div>
+                    <div class="mock-comment-avatar">${firstLetter}</div>
                     <div class="mock-comment-content">
-                        <h5>You <span>Just now</span></h5>
+                        <h5>${safeName} <span>Just now</span></h5>
                         <p>${text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
                     </div>
                 </div>
