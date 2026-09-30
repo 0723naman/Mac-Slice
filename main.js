@@ -18,33 +18,35 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set initial theme (force light mode by default)
     if (savedTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
+        if(sunIcon) sunIcon.style.display = 'block';
+        if(moonIcon) moonIcon.style.display = 'none';
     }
 
     if (themeToggles.length > 0) {
-        themeToggles.forEach(btn => btn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            if (newTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-                localStorage.setItem('theme', 'light');
-            }
-        }));
+        themeToggles.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                if (newTheme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    document.querySelectorAll('.sun-icon').forEach(el => el.style.display = 'block');
+                    document.querySelectorAll('.moon-icon').forEach(el => el.style.display = 'none');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                    document.querySelectorAll('.sun-icon').forEach(el => el.style.display = 'none');
+                    document.querySelectorAll('.moon-icon').forEach(el => el.style.display = 'block');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
     }
 
     if (typeof gsap === 'undefined') return;
     
     // Timeline for the hero section
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } }));
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     // Fade in text from below
     tl.to(".hero-content", {
@@ -65,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Rotating Text Animation
     const rotatingTexts = gsap.utils.toArray(".rotating-text");
     if (rotatingTexts.length > 0) {
-        const textTl = gsap.timeline({ repeat: -1 }));
+        const textTl = gsap.timeline({ repeat: -1 });
         
         rotatingTexts.forEach((text, i) => {
             textTl
@@ -75,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 )
                 .to(text, {
                     y: "-100%", opacity: 0, duration: 0.6, ease: "power2.in", delay: 2.5
-                }));
-        }));
+                });
+        });
     }
 
     // Statement section fade up
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 50,
         duration: 1.2,
         ease: "power2.out"
-    }));
+    });
 
     // Scroll Animations for Feature Sections
     const features = gsap.utils.toArray(".feature-section");
@@ -141,8 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             y: -30,
             ease: "none"
-        }));
-    }));
+        });
+    });
 
     // Bento Grid Animation
     gsap.from(".bento-card", {
@@ -156,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.8,
         stagger: 0.15,
         ease: "power2.out"
-    }));
+    });
 
     // Premium Pricing Fade up
     gsap.from(".pricing-premium-section", {
@@ -169,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 50,
         duration: 1,
         ease: "power3.out"
-    }));
+    });
 
     // FAQ Accordion Logic
     const faqQuestions = document.querySelectorAll('.faq-question');
@@ -192,9 +194,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     otherQuestion.classList.remove('active');
                     otherQuestion.nextElementSibling.style.maxHeight = 0;
                 }
-            }));
-        }));
-    }));
+            });
+        });
+    });
 
     // Auto-switching image gallery
     const galleries = document.querySelectorAll('.image-gallery');
@@ -208,8 +210,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 images[currentIndex].classList.add('active');
             }, 3000);
         }
-    }));
-}));
+    });
+});
 
 // Modal Logic
 function openProModal() {
@@ -225,6 +227,6 @@ document.getElementById('proModal').addEventListener('click', function(e) {
     if (e.target === this) {
         closeProModal();
     }
-}));
+});
 
 
