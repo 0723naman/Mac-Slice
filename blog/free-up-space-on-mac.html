@@ -17,7 +17,8 @@
 
     <style>
         /* Fix for sticky sidebar and horizontal scroll */
-        html, body { overflow-x: hidden; width: 100%; position: relative; }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { overflow-x: hidden; width: 100%; position: relative; margin: 0; padding: 0; }
 
         .blog-top-section {
             max-width: 1100px;
@@ -82,7 +83,7 @@
         .blog-content li { margin-bottom: 10px; }
         .blog-content a { color: var(--accent); text-decoration: none; }
         .blog-content a:hover { text-decoration: underline; }
-        .blog-content code { background: #1e1e1e; padding: 4px 8px; border-radius: 6px; color: #4af626; font-size: 15px; border: 1px solid #333; font-family: monospace; }
+        .blog-content code { background: #1e1e1e; padding: 4px 8px; border-radius: 6px; color: #4af626; font-size: 15px; border: 1px solid #333; font-family: monospace; word-wrap: break-word; overflow-wrap: break-word; word-break: break-all; }
         .blog-content pre code { display: block; padding: 16px; background: #1e1e1e; color: #4af626; overflow-x: auto; border: 1px solid #333; border-radius: 8px; margin-bottom: 24px; font-family: monospace; }
         .blog-content table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 16px; }
         .blog-content th, .blog-content td { text-align: left; padding: 16px; border-bottom: 1px solid var(--border-color); }
@@ -201,8 +202,8 @@
             .author-box { flex-direction: column; text-align: center; padding: 24px; gap: 12px; margin-top: 40px; }
             .mid-cta { padding: 24px; margin: 40px 0; }
             .blog-content table { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; }
-            .blog-content pre { max-width: 100vw; margin-left: -16px; margin-right: -16px; border-radius: 0; border-left: none; border-right: none; }
-            .blog-content pre code { border-radius: 0; border: none; }
+            .blog-content pre { max-width: 100%; margin-left: 0; margin-right: 0; border-radius: 8px; border-left: 1px solid #333; border-right: 1px solid #333; }
+            .blog-content pre code { border-radius: 8px; border: none; }
         }
     </style>
 
