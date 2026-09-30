@@ -1161,26 +1161,26 @@ footer {
         top: 74px;
         left: 20px;
         right: 20px;
-        background: var(--nav-bg);
+        background: var(--panel-bg);
         border: 1px solid var(--border-color);
-        border-radius: 16px;
+        border-radius: 20px;
         padding: 24px;
         flex-direction: column;
         gap: 24px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        backdrop-filter: saturate(180%) blur(20px);
-        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        box-shadow: 0 20px 50px var(--shadow-color);
+        backdrop-filter: saturate(180%) blur(30px);
+        -webkit-backdrop-filter: saturate(180%) blur(30px);
         opacity: 0;
         pointer-events: none;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
+        transform: translateY(-10px) scale(0.98);
+        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 999;
     }
     
     .nav-links.mobile-open {
         opacity: 1;
         pointer-events: auto;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
     
     .nav-links a {
