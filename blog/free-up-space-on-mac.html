@@ -71,7 +71,7 @@
         .toc-sidebar h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary); margin-bottom: 12px; }
         .toc-sidebar ul { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--border-color); }
         .toc-sidebar li a { display: block; padding: 8px 0 8px 16px; font-size: 15px; color: var(--text-secondary); text-decoration: none; margin-left: -1px; border-left: 1px solid transparent; transition: all 0.2s; line-height: 1.4; }
-        .toc-sidebar li a:hover { color: var(--text-primary); border-left-color: var(--text-primary); }
+        .toc-sidebar li a:hover, .toc-sidebar li a.active { color: var(--text-primary); border-left-color: var(--text-primary); font-weight: 600; }
 
         .blog-content { color: var(--text-secondary); line-height: 1.8; font-size: 18px; }
         .blog-content h2 { color: var(--text-primary); font-size: 32px; margin: 56px 0 24px; font-weight: 700; scroll-margin-top: 100px; }
@@ -556,6 +556,26 @@
             <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         `;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.blog-content h2[id], .blog-content h3[id]');
+            const navLinks = document.querySelectorAll('.toc-sidebar li a');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-100px 0px -70% 0px', threshold: 0 });
+
+            sections.forEach(sec => observer.observe(sec));
+        });
     </script>
 </body>
 </html>
