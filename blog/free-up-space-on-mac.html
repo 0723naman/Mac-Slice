@@ -208,12 +208,12 @@
         </a>
     </div>
 
-    <nav class="navbar">
+    <nav class="navbar" style="border-bottom: none !important; background: var(--bg-primary) !important;">
         <div class="nav-content">
             <div class="logo">
                 <a href="../index.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
                     <img src="../assets/mac_slice_logo.webp" alt="Mac Slice Logo" style="width: 28px; height: 28px; border-radius: 6px;">
-                    <span>Mac Slice</span>
+                    <span class="editorial-font" style="font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">mac slice</span>
                 </a>
             </div>
             <div class="nav-links">
@@ -408,20 +408,34 @@
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <div class="footer-logo">
-                    <img src="../assets/mac_slice_logo.webp" alt="Mac Slice Logo" style="width: 20px; height: 20px; border-radius: 4px;">
-                    <span>Mac Slice</span>
+        <div class="footer-content" style="max-width: 1100px; padding: 40px 24px; margin: 0 auto;">
+            <div class="footer-grid">
+                
+                <!-- Left: Copyright & Links -->
+                <div class="left">
+                    <p class="footer-copyright" style="margin: 0; color: var(--text-secondary); font-size: 14px;">&copy; 2026 Mac Slice. Built natively for macOS.</p>
+                    <div class="footer-links-stacked">
+                        <a href="../pricing.html">Pricing</a>
+                        <a href="../privacy">Privacy Policy</a>
+                        <a href="../terms">Terms of Service</a>
+                        <a href="../refunds">Refund Policy</a>
+                        <a href="../support">Contact Support</a>
+                    </div>
                 </div>
-                <p class="footer-copyright">&copy; 2026 Mac Slice.<br>Built natively for macOS.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <a href="../privacy">Privacy Policy</a>
-                <a href="../terms">Terms of Service</a>
-                <a href="../refunds">Refund Policy</a>
-                <a href="../support">Contact Support</a>
+                
+                <!-- Center: Logo/Name -->
+                <div class="center" style="display: flex; justify-content: center; align-items: flex-start; padding-top: 4px;">
+                    <span class="editorial-font" style="font-size: 24px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-primary);">mac slice</span>
+                </div>
+                
+                <!-- Right: Follow me + Circular X Icon -->
+                <div class="right">
+                    <span style="font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-top: 14px;">Follow me</span>
+                    <a href="https://x.com/thenamanraj" target="_blank" aria-label="X" class="circle-x-btn">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+
             </div>
         </div>
     </footer>
