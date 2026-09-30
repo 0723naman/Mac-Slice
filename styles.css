@@ -1138,11 +1138,17 @@ footer {
 
 @media (max-width: 768px) {
     /* Navigation */
-    .nav-content { padding: 0 16px; }
-    .buy-btn { padding: 8px 16px; font-size: 13px; }
+    .nav-content { 
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px; 
+        width: 100%;
+    }
+    .buy-btn { padding: 8px 16px; font-size: 13px; margin-right: 8px; order: 1; }
     
+    .nav-actions { display: flex; align-items: center; justify-content: flex-end; }
     .nav-actions > .theme-toggle { display: none !important; }
-    .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+    .mobile-menu-btn { display: flex; align-items: center; justify-content: center; order: 2; }
     
     .nav-links {
         position: fixed;
