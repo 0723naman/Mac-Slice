@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Free Up Space on Mac: 12 Fixes That Actually Work</title>
+    <meta name="description" content="12 ways to free up space on a Mac, starting with the ones that return the most. Includes the hidden folders and leftovers Apple's Storage screen never shows.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    
+    <link rel="canonical" href="https://www.macslice.online/blog/free-up-space-on-mac" />
+    <meta property="og:url" content="https://www.macslice.online/blog/free-up-space-on-mac" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Free Up Space on Mac: 12 Fixes That Actually Work" />
+    <meta property="og:description" content="12 ways to free up space on a Mac, starting with the ones that return the most. Includes the hidden folders and leftovers Apple's Storage screen never shows." />
+    <meta property="og:image" content="https://www.macslice.online/assets/screenshots/real_hero_image.webp" />
+
+    <style>
+        /* Fix for sticky sidebar */
+        body { overflow-x: clip; }
+
+        .blog-top-section {
+            max-width: 1100px;
+            margin: 120px auto 0;
+            padding: 0 24px;
+        }
+
+        .blog-container {
+            max-width: 1400px; /* Wider for bigger font */
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 260px 1fr 300px;
+            gap: 56px;
+            align-items: start;
+        }
+
+        @media (max-width: 1100px) {
+            .blog-container { grid-template-columns: 1fr; }
+            .toc-sidebar, .cta-sidebar, .share-bar { display: none !important; }
+        }
+
+        .blog-header { text-align: center; margin-bottom: 40px; }
+        .blog-breadcrumbs { font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 16px; font-weight: 600; }
+        .blog-breadcrumbs a { color: var(--accent); text-decoration: none; }
+        .blog-title { font-size: 52px; font-weight: 700; color: var(--text-primary); line-height: 1.1; margin-bottom: 20px; text-wrap: balance; }
+        .blog-subtitle { font-size: 20px; color: var(--text-secondary); line-height: 1.6; max-width: 750px; margin: 0 auto 24px; text-wrap: pretty; }
+        
+        /* Author Top Bar */
+        .author-meta-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 24px;
+        }
+        .author-meta-top .avatar-img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .author-meta-top .avatar-text { color: var(--text-primary); font-weight: 600; }
+        .author-meta-top .avatar-handle { color: var(--accent); text-decoration: none; margin-left: -4px; }
+        .author-meta-top .avatar-handle:hover { text-decoration: underline; }
+
+        .blog-hero { width: 100%; border-radius: 16px; margin-bottom: 56px; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        
+        .toc-sidebar { position: sticky; top: 100px; }
+        .toc-sidebar h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary); margin-bottom: 12px; }
+        .toc-sidebar ul { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--border-color); }
+        .toc-sidebar li a { display: block; padding: 8px 0 8px 16px; font-size: 15px; color: var(--text-secondary); text-decoration: none; margin-left: -1px; border-left: 1px solid transparent; transition: all 0.2s; line-height: 1.4; }
+        .toc-sidebar li a:hover { color: var(--text-primary); border-left-color: var(--text-primary); }
+
+        .blog-content { color: var(--text-secondary); line-height: 1.8; font-size: 18px; }
+        .blog-content h2 { color: var(--text-primary); font-size: 32px; margin: 56px 0 24px; font-weight: 700; scroll-margin-top: 100px; }
+        .blog-content h3 { color: var(--text-primary); font-size: 22px; margin: 40px 0 16px; font-weight: 600; scroll-margin-top: 100px; }
+        .blog-content p { margin-bottom: 24px; }
+        .blog-content ul, .blog-content ol { margin-bottom: 24px; padding-left: 24px; }
+        .blog-content li { margin-bottom: 10px; }
+        .blog-content a { color: var(--accent); text-decoration: none; }
+        .blog-content a:hover { text-decoration: underline; }
+        .blog-content code { background: var(--bg-secondary); padding: 4px 8px; border-radius: 6px; color: var(--accent); font-size: 15px; }
+        .blog-content pre code { display: block; padding: 16px; background: var(--bg-secondary); color: var(--text-primary); overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 24px; }
+        .blog-content table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 16px; }
+        .blog-content th, .blog-content td { text-align: left; padding: 16px; border-bottom: 1px solid var(--border-color); }
+        .blog-content th { font-weight: 600; color: var(--text-primary); }
+
+        /* Mid-content CTA */
+        .mid-cta {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 56px 0;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        @media (max-width: 768px) { .mid-cta { flex-direction: column; text-align: center; } }
+        .mid-cta-text h3 { margin: 0 0 16px; font-size: 26px; color: var(--text-primary); line-height: 1.2; }
+        .mid-cta-text p { margin-bottom: 24px; font-size: 17px; }
+        .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent); color: #ffffff !important; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px; transition: 0.2s; border: none; cursor: pointer; }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); text-decoration: none !important; }
+        
+        /* Floating Right CTA */
+        .cta-sidebar { position: sticky; top: 100px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; }
+        .cta-sidebar-img { width: 100%; border-bottom: 1px solid var(--border-color); display: block; }
+        .cta-sidebar-content { padding: 24px; }
+        .cta-sidebar-content h4 { font-size: 18px; color: var(--text-primary); margin-bottom: 8px; font-weight: 600; }
+        .cta-sidebar-content p { font-size: 15px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+        .cta-sidebar .btn-primary { width: 100%; }
+        
+        /* Author bio */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 32px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-top: 64px;
+            background: var(--bg-secondary);
+        }
+        .author-box img {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .author-info h4 { color: var(--text-primary); margin: 0 0 6px 0; font-size: 18px; }
+        .author-info h4 a { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: normal; margin-left: 8px; }
+        .author-info h4 a:hover { text-decoration: underline; }
+        .author-info p { color: var(--text-secondary); margin: 0; font-size: 16px; line-height: 1.5; }
+        
+        /* Sticky Share Bar */
+        .share-bar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 50;
+        }
+        .share-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ffffff !important;
+            border: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .share-btn:hover { transform: scale(1.1); filter: brightness(1.1); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .share-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How to Free Up Space on Mac: 12 Fixes That Actually Work",
+      "description": "12 ways to free up space on a Mac, starting with the ones that return the most. Includes the hidden folders and leftovers Apple's Storage screen never shows.",
+      "author": { "@type": "Person", "name": "Naman Raj", "url": "https://x.com/thenamanraj" },
+      "publisher": { "@type": "Organization", "name": "Mac Slice", "logo": { "@type": "ImageObject", "url": "https://www.macslice.online/assets/mac_slice_logo.png" } },
+      "datePublished": "2026-09-30",
+      "dateModified": "2026-09-30",
+      "image": "https://www.macslice.online/assets/screenshots/real_hero_image.webp"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.macslice.online" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.macslice.online/blog" },
+        { "@type": "ListItem", "position": 3, "name": "How to Free Up Space on Mac: 12 Fixes That Actually Work", "item": "https://www.macslice.online/blog/free-up-space-on-mac" }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <div class="share-bar">
+        <a href="https://twitter.com/intent/tweet?text=How%20to%20Free%20Up%20Space%20on%20Mac%3A%2012%20Fixes%20That%20Actually%20Work&url=https%3A%2F%2Fwww.macslice.online%2Fblog%2Ffree-up-space-on-mac" target="_blank" class="share-btn" aria-label="Share on X" style="color: #000000;">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.macslice.online%2Fblog%2Ffree-up-space-on-mac" target="_blank" class="share-btn" aria-label="Share on Facebook" style="color: #1877F2;">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.macslice.online%2Fblog%2Ffree-up-space-on-mac&title=How%20to%20Free%20Up%20Space%20on%20Mac" target="_blank" class="share-btn" aria-label="Share on LinkedIn" style="color: #0A66C2;">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:?subject=How%20to%20Free%20Up%20Space%20on%20Mac&body=Check%20out%20this%20guide:%20https%3A%2F%2Fwww.macslice.online%2Fblog%2Ffree-up-space-on-mac" class="share-btn" aria-label="Share via Email" style="color: #EA4335;">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="../index.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                    <img src="../assets/mac_slice_logo.webp" alt="Mac Slice Logo" style="width: 28px; height: 28px; border-radius: 6px;">
+                    <span>Mac Slice</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html#how-it-works">How it Works</a>
+                <a href="../blog.html">Blog</a>
+                <a href="../pricing.html">Pricing</a>
+            </div>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="blog-top-section">
+        <header class="blog-header">
+            <div class="blog-breadcrumbs">
+                <a href="../blog.html">Guides</a> / <a href="#how-do-i-free-up-space-on-my-mac-fast">Free up space</a>
+            </div>
+            <h1 class="blog-title">How to Free Up Space on Mac: 12 Fixes That Actually Work</h1>
+            <p class="blog-subtitle">12 ways to free up space on a Mac, starting with the ones that return the most. Includes the hidden folders and leftovers Apple's Storage screen never shows.</p>
+            
+            <div class="author-meta-top">
+                <img src="https://unavatar.io/twitter/thenamanraj" alt="Naman Raj" class="avatar-img">
+                <span class="avatar-text">Naman Raj</span>
+                <a href="https://x.com/thenamanraj" target="_blank" class="avatar-handle">@thenamanraj</a>
+                <span>·</span>
+                <span>Updated <time>Sep 30, 2026</time></span>
+                <span>·</span>
+                <span>7 min read</span>
+            </div>
+        </header>
+
+        <img src="../assets/screenshots/real_hero_image.webp" alt="Mac Slice analyzing local folders" class="blog-hero">
+    </div>
+
+    <div class="blog-container">
+        <aside class="toc-sidebar">
+            <h4>On this page</h4>
+            <ul id="toc-list">
+                <li><a href="#how-do-i-free-up-space-on-my-mac-fast">How do I free up space on my Mac fast?</a></li>
+                <li><a href="#the-12-fixes">The 12 fixes</a></li>
+                <li><a href="#what-should-i-delete-when-mac-storage-is-full">What should I delete when Mac storage is full?</a></li>
+                <li><a href="#why-is-my-mac-still-full-after-deleting-files">Why is my Mac still full after deleting files?</a></li>
+                <li><a href="#why-is-my-disk-full-after-a-macos-update">Why is my disk full after a macOS update?</a></li>
+                <li><a href="#how-much-free-space-does-a-mac-need">How much free space does a Mac need?</a></li>
+            </ul>
+        </aside>
+
+        <main class="blog-article">
+            <div class="blog-content">
+                <h2 id="how-do-i-free-up-space-on-my-mac-fast" style="margin-top: 0;">How do I free up space on my Mac fast?</h2>
+                <p>The fastest way to free up space on a Mac is to find the few folders taking most of it, then deal with those, rather than deleting lots of small files. A full Mac is rarely full of everything. It's usually full of two or three things: local Time Machine snapshots, old iPhone backups, app caches, leftovers from deleted apps, developer files or a Downloads folder nobody has opened in years.</p>
+                <p>The 12 fixes below start with the ones that tend to return the most space for the least risk. To free up space on a Mac fast, empty every Trash (including Photos' Recently Deleted album), sort Downloads by size and delete the largest files, remove old local Time Machine snapshots, and delete iPhone or iPad backups you no longer need. Those four steps take about ten minutes and don't touch anything you'd miss.</p>
+                <p>If that isn't enough, work through the full list below.</p>
+
+                <h2 id="the-12-fixes">The 12 fixes</h2>
+                <h3>1. Find the biggest folders first</h3>
+                <p>Most wasted cleanup time comes from deleting things that were never the problem. Before you start, find out where the space is.</p>
+                <p><a href="../pricing.html">Mac Slice</a> scans your drive and draws every folder as a block sized by how much space it takes, including the Library folders Finder hides. The two or three folders causing the problem are the biggest blocks on the screen. The map is free.</p>
+                <p>Prefer Terminal? This ranks the folders in your home folder by size:</p>
+                <pre><code>du -sh ~/* ~/Library/* 2>/dev/null | sort -h</code></pre>
+
+                <div class="mid-cta">
+                    <div class="mid-cta-text">
+                        <h3>Find the folders filling your Mac</h3>
+                        <p>Mac Slice draws your whole drive to scale, hidden Library folders included, so the few things taking most of the space are the biggest blocks on screen. The map is free. Pro ($12.99 once) deletes, uninstalls and clears app leftovers natively.</p>
+                        <a href="../pricing.html" class="btn-primary">Get Mac Slice Pro · $12.99</a>
+                        <p style="font-size: 14px; margin-top: 16px; color: var(--text-secondary);">✓ One-time payment · 15-day guarantee</p>
+                    </div>
+                    <div style="flex: 1;">
+                        <img src="../assets/screenshots/feature2.webp" alt="Mac Slice Chart" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    </div>
+                </div>
+
+                <h3>2. Empty every Trash</h3>
+                <p>The Finder Trash is the obvious one. Photos keeps deleted pictures in <strong>Recently Deleted</strong> for 30 days, Notes has its own <strong>Recently Deleted</strong> folder, and Mail keeps a Trash mailbox. All of them count against your storage until they're emptied.</p>
+
+                <h3>3. Clear out Downloads and old installers</h3>
+                <p>Open Downloads in Finder, switch to List view and sort by Size. Installers, disk images and videos collect here for years.</p>
+                <p>While you're at it, search your whole Mac for <code>.dmg</code> and <code>.pkg</code> files. Once an app is installed, its installer is dead weight.</p>
+
+                <h3>4. Remove local Time Machine snapshots</h3>
+                <p>macOS keeps hourly snapshots on your internal drive between Time Machine backups. If your backup disk has been unplugged for a while, they pile up, and they're often the largest single item on a full Mac. List them:</p>
+                <pre><code>tmutil listlocalsnapshots /</code></pre>
+                <p>Ask macOS to thin them (this requests roughly 20 GB back):</p>
+                <pre><code>sudo tmutil thinlocalsnapshots / 21474836480 4</code></pre>
+                <p>Plugging in your backup drive and letting a backup finish also clears the backlog.</p>
+
+                <h3>5. Delete old iPhone and iPad backups</h3>
+                <p>Connect your device, select it in the Finder sidebar and click <strong>Manage Backups</strong>, or open <code>~/Library/Application Support/MobileSync/Backup</code>, where each folder is one full backup. Delete backups for devices you no longer own. Check you have another copy first, because deleted backups can't be recovered.</p>
+
+                <h3>6. Clear app caches</h3>
+                <p>Press <code>Cmd + Shift + G</code> in Finder and go to <code>~/Library/Caches</code>. Delete the contents of individual app folders, not the <code>Caches</code> folder itself. Browsers, music apps, chat apps and design tools are the usual heavyweights. Everything here rebuilds, though you may need to sign in again.</p>
+
+                <h3>7. Uninstall apps you don't use, properly</h3>
+                <p>Dragging an app to the Trash removes the app but leaves its containers, caches and preference files behind. Apps you haven't opened in a year are worth removing, and it's worth removing them completely.</p>
+                <p>Mac Slice Pro's uninstaller removes an app together with everything it left in your Library, in one step.</p>
+
+                <h3>8. Remove leftovers from apps you've already deleted</h3>
+                <p>Apps you deleted in the past probably left folders behind in <code>~/Library/Application Support</code>, <code>~/Library/Containers</code> and <code>~/Library/Caches</code>. Look for folders named after software you no longer have.</p>
+                <p>Be careful: Application Support also holds live data, such as Mail's database and saved games. Only delete what you can clearly match to an app that's gone. Mac Slice Pro finds these leftovers for you, shows what's inside, and moves them to the Trash in one click.</p>
+
+                <h3>9. Clear developer files</h3>
+                <p>If you write code, this is often the whole problem:</p>
+                <ul>
+                <li><strong>Xcode:</strong> <code>~/Library/Developer/Xcode/DerivedData</code> is safe to delete.</li>
+                <li><strong>Docker:</strong> use <code>docker system prune -a</code> rather than deleting files by hand.</li>
+                <li><strong>Android Studio:</strong> emulator images live in <code>~/.android/avd</code>.</li>
+                <li><strong>Node.js:</strong> old <code>node_modules</code> folders add up across projects.</li>
+                </ul>
+
+                <h3>10. Clear Mail's downloaded attachments</h3>
+                <p>Mail saves attachments you open to:</p>
+                <pre><code>~/Library/Containers/com.apple.mail/Data/Library/Mail Downloads</code></pre>
+                <p>It's safe to empty. The attachments stay in the original emails on the server.</p>
+
+                <h3>11. Use the built-in Storage recommendations</h3>
+                <p>Open <strong>Apple menu > System Settings > General > Storage</strong>. The recommendations at the top are safe to use:</p>
+                <ul>
+                <li><strong>Store in iCloud</strong> moves files and photos off your drive, keeping them available on demand</li>
+                <li><strong>Optimize Storage</strong> removes Apple TV movies and shows you've already watched</li>
+                <li><strong>Empty Trash Automatically</strong> deletes items that have been in the Trash for 30 days</li>
+                </ul>
+
+                <h3>12. Find duplicate files</h3>
+                <p>Photos imported twice, documents saved to both Desktop and iCloud Drive, project folders copied "just in case". Duplicates rarely take the most space, but they add up.</p>
+
+                <h2 id="what-should-i-delete-when-mac-storage-is-full">What should I delete when Mac storage is full?</h2>
+                <p>When Mac storage is full, delete in this order: the Trash and Downloads first, then old Time Machine snapshots and device backups, then app caches, then leftovers from deleted apps and developer files. That order gets the most space back with the least risk of removing something you need.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>What to delete</th>
+                            <th>Risk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Trash, Downloads, old <code>.dmg</code> installers</td><td>Very low</td></tr>
+                        <tr><td>2</td><td>Local Time Machine snapshots</td><td>Low, if real backups intact</td></tr>
+                        <tr><td>3</td><td>Old iPhone and iPad backups</td><td>Low, if you have another copy</td></tr>
+                        <tr><td>4</td><td>App caches</td><td>Low, they rebuild</td></tr>
+                        <tr><td>5</td><td>Leftovers from deleted apps</td><td>Medium, check each folder</td></tr>
+                        <tr><td>6</td><td>Developer files</td><td>Low, builds get slower</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>Never delete</strong> anything in <code>/System</code>, your <code>~/Library/Keychains</code> folder, or Application Support folders for apps you still use.</p>
+
+                <h2 id="why-is-my-mac-still-full-after-deleting-files">Why is my Mac still full after deleting files?</h2>
+                <p>A Mac usually stays full after deleting files for one of three reasons: the Trash hasn't been emptied, the freed space is still marked as purgeable by macOS, or the files you deleted were never the ones taking the space. Clearing a hundred small files won't help when one large folder is the real cause.</p>
+                <p>Two more things worth trying:</p>
+                <ul>
+                <li><strong>Restart your Mac.</strong> Swap files and some temporary files are cleared on restart, and the Storage screen often recalculates afterwards.</li>
+                <li><strong>Look for the real cause.</strong> A disk map shows the largest folders in seconds, which is faster than working through a checklist a second time.</li>
+                </ul>
+
+                <h2 id="why-is-my-disk-full-after-a-macos-update">Why is my disk full after a macOS update?</h2>
+                <p>A disk often looks fuller after a macOS update because of snapshots taken before the install, installer files that weren't cleaned up, and Spotlight rebuilding its index. Most of it clears within a few days on its own.</p>
+                <p>If it doesn't:</p>
+                <ol>
+                <li><strong>Check for old snapshots.</strong> Run <code>tmutil listlocalsnapshots /</code> and remove any dated before the update with <code>sudo tmutil deletelocalsnapshots &lt;date&gt;</code>, if your Time Machine backups are up to date.</li>
+                <li><strong>Check for leftover installer files.</strong> Run <code>ls -lh /Library/Updates/</code>. Wait until your Mac has run the new version without problems for a few days before deleting anything there.</li>
+                <li><strong>Let Spotlight finish.</strong> High CPU from <code>mds</code> processes in Activity Monitor means it's still indexing. Give it a few hours.</li>
+                <li><strong>Restart</strong>, then check the Storage screen again.</li>
+                </ol>
+
+                <h2 id="how-much-free-space-does-a-mac-need">How much free space does a Mac need?</h2>
+                <p>As a rule of thumb, keep at least 10 to 15% of your drive free. macOS uses that room for swap files, snapshots and updates, and a Mac that runs close to full gets slower and can fail to install updates. Major macOS upgrades need tens of gigabytes of free space, so check Apple's requirements before you start one.</p>
+                
+                <div class="author-box">
+                    <img src="https://unavatar.io/twitter/thenamanraj" alt="Naman Raj" class="author-avatar-img">
+                    <div class="author-info">
+                        <h4>Naman Raj <a href="https://x.com/thenamanraj" target="_blank">@thenamanraj</a></h4>
+                        <p>Builds Mac Slice and writes these guides from what the app finds on real Macs. Last checked this one on Sep 30, 2026.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="cta-sidebar">
+            <img src="../assets/screenshots/real_hero_image.webp" alt="Mac Slice Interface" class="cta-sidebar-img">
+            <div class="cta-sidebar-content">
+                <h4>Mac Slice</h4>
+                <p>See every folder on your Mac drawn to scale, then clear what you don't need natively.</p>
+                <a href="../pricing.html" class="btn-primary">Get Pro · $12.99</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="../assets/mac_slice_logo.webp" alt="Mac Slice Logo" style="width: 20px; height: 20px; border-radius: 4px;">
+                    <span>Mac Slice</span>
+                </div>
+                <p class="footer-copyright">&copy; 2026 Mac Slice.<br>Built natively for macOS.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="../privacy">Privacy Policy</a>
+                <a href="../terms">Terms of Service</a>
+                <a href="../refunds">Refund Policy</a>
+                <a href="../support">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+    <script src="../main.js"></script>
+    <script>
+        document.getElementById('theme-toggle').innerHTML = `
+            <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        `;
+    </script>
+</body>
+</html>
