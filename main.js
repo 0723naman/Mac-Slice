@@ -282,22 +282,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) modal.classList.remove('active');
     });
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('downloadEmail').value;
+        const btn = form.querySelector('button');
         
         if (email && email.includes('@')) {
-            // Trigger the download
-            window.location.href = currentDownloadUrl;
-            
-            // Optionally, here you would send the email to your backend (e.g. fetch to a server)
-            console.log("Captured email for download:", email);
-            
-            // Show a quick success state before closing
-            const btn = form.querySelector('button');
             const originalText = btn.innerText;
             btn.innerText = "Starting...";
             btn.style.opacity = "0.8";
+
+            // Save the email to Vercel KV
+            try {
+                await fetch('/api/capture', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+            } catch (err) {
+                console.error("Failed to save email", err);
+            }
+
+            // Trigger the download
+            window.location.href = currentDownloadUrl;
             
             setTimeout(() => {
                 modal.classList.remove('active');
