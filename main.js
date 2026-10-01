@@ -230,3 +230,81 @@ document.getElementById('proModal').addEventListener('click', function(e) {
 });
 
 
+
+// --- Email Capture Download Modal ---
+document.addEventListener('DOMContentLoaded', () => {
+    const downloadLinks = document.querySelectorAll('a[href*="MacSlice.dmg"]');
+    if (downloadLinks.length === 0) return;
+
+    // Create the modal HTML
+    const modalHTML = `
+        <div id="emailDownloadModal" class="email-modal-overlay">
+            <div class="email-modal">
+                <button class="email-modal-close" id="closeEmailModal">&times;</button>
+                <div class="email-modal-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </div>
+                <h2>Download Mac Slice</h2>
+                <p>Enter your email to get the free version. We'll send you occasional tips on keeping your Mac fast.</p>
+                <form id="emailDownloadForm">
+                    <input type="email" id="downloadEmail" placeholder="your@email.com" required>
+                    <button type="submit" class="panel-btn solid" style="width: 100%; margin-top: 16px;">Download Free</button>
+                </form>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    const modal = document.getElementById('emailDownloadModal');
+    const closeBtn = document.getElementById('closeEmailModal');
+    const form = document.getElementById('emailDownloadForm');
+    let currentDownloadUrl = '';
+
+    downloadLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentDownloadUrl = link.href;
+            modal.classList.add('active');
+            setTimeout(() => document.getElementById('downloadEmail').focus(), 100);
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('downloadEmail').value;
+        
+        if (email && email.includes('@')) {
+            // Trigger the download
+            window.location.href = currentDownloadUrl;
+            
+            // Optionally, here you would send the email to your backend (e.g. fetch to a server)
+            console.log("Captured email for download:", email);
+            
+            // Show a quick success state before closing
+            const btn = form.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "Starting...";
+            btn.style.opacity = "0.8";
+            
+            setTimeout(() => {
+                modal.classList.remove('active');
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+                form.reset();
+            }, 1000);
+        }
+    });
+});
