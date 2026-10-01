@@ -341,7 +341,7 @@ body {
 /* 3-Panel Pricing Layout */
 .pricing-panels {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     width: 100%;
 }
@@ -646,7 +646,7 @@ footer {
 .how-it-works-header { margin-bottom: 80px; }
 .how-it-works-header h2 { font-size: 48px; font-weight: 600; margin-bottom: 16px; }
 .how-it-works-header p { font-size: 21px; color: var(--text-secondary); }
-.steps-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: left; }
+.steps-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; text-align: left; }
 .step-box {
     background: var(--card-bg);
     border-radius: 24px;
