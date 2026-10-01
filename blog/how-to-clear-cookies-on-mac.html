@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Clear Cookies on a Mac: Safari, Chrome and Firefox</title>
+    <meta name="description" content="Learn how to clear cookies on a Mac in Safari, Chrome and Firefox, for one site or all of them, what you'll be signed out of, and how to block third-party cookies.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    
+    <link rel="canonical" href="https://www.macslice.online/blog/how-to-clear-cookies-on-mac" />
+    <meta property="og:url" content="https://www.macslice.online/blog/how-to-clear-cookies-on-mac" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Clear Cookies on a Mac: Safari, Chrome and Firefox" />
+    <meta property="og:description" content="Learn how to clear cookies on a Mac in Safari, Chrome and Firefox, for one site or all of them, what you'll be signed out of, and how to block third-party cookies." />
+    <meta property="og:image" content="https://www.macslice.online/assets/screenshots/real_hero_image.webp" />
+
+    <style>
+        /* Fix for sticky sidebar and horizontal scroll */
+
+        .blog-top-section {
+            max-width: 1100px;
+            margin: 120px auto 0;
+            padding: 0 24px;
+        }
+
+        .blog-container {
+            max-width: 1400px; /* Wider for bigger font */
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr) 300px;
+            gap: 56px;
+            align-items: start;
+        }
+
+        @media (max-width: 1100px) {
+            .blog-container { grid-template-columns: minmax(0, 1fr); }
+            .toc-sidebar, .cta-sidebar, .share-bar { display: none !important; }
+        }
+
+        .blog-header { text-align: center; margin-bottom: 40px; }
+        .blog-breadcrumbs { font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 16px; font-weight: 600; }
+        .blog-breadcrumbs a { color: var(--accent); text-decoration: none; }
+        .blog-title { font-size: 52px; font-weight: 700; color: var(--text-primary); line-height: 1.1; margin-bottom: 20px; text-wrap: balance; }
+        .blog-subtitle { font-size: 20px; color: var(--text-secondary); line-height: 1.6; max-width: 750px; margin: 0 auto 24px; text-wrap: pretty; }
+        
+        /* Author Top Bar */
+        .author-meta-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 24px;
+        }
+        .author-meta-top .avatar-img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .author-meta-top .avatar-text { color: var(--text-primary); font-weight: 600; }
+        .author-meta-top .avatar-handle { color: var(--accent); text-decoration: none; margin-left: -4px; }
+        .author-meta-top .avatar-handle:hover { text-decoration: underline; }
+
+        .blog-hero { width: 100%; max-width: 100%; border-radius: 16px; margin-bottom: 56px; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        
+        .toc-sidebar { position: sticky; top: 100px; }
+        .toc-sidebar h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary); margin-bottom: 12px; }
+        .toc-sidebar ul { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--border-color); }
+        .toc-sidebar li a { display: block; padding: 8px 0 8px 16px; font-size: 15px; color: var(--text-secondary); text-decoration: none; margin-left: -1px; border-left: 1px solid transparent; transition: all 0.2s; line-height: 1.4; }
+        .toc-sidebar li a:hover, .toc-sidebar li a.active { color: var(--text-primary); border-left-color: var(--text-primary); font-weight: 600; }
+
+        .blog-article { min-width: 0; width: 100%; max-width: 100%; }
+        .blog-content { color: var(--text-secondary); line-height: 1.8; font-size: 18px; min-width: 0; width: 100%; max-width: 100%; overflow-wrap: break-word; word-wrap: break-word; }
+        .blog-content h2 { color: var(--text-primary); font-size: 32px; margin: 56px 0 24px; font-weight: 700; scroll-margin-top: 100px; }
+        .blog-content h3 { color: var(--text-primary); font-size: 22px; margin: 40px 0 16px; font-weight: 600; scroll-margin-top: 100px; }
+        .blog-content p { margin-bottom: 24px; }
+        .blog-content ul, .blog-content ol { margin-bottom: 24px; padding-left: 24px; }
+        .blog-content li { margin-bottom: 10px; }
+        .blog-content a { color: var(--accent); text-decoration: none; }
+        .blog-content a:hover { text-decoration: underline; }
+        .blog-content code { background: #ffffff; padding: 4px 8px; border-radius: 6px; color: #1da31d; font-size: 15px; border: 1px solid var(--border-color); font-family: monospace; word-wrap: break-word; overflow-wrap: break-word; word-break: break-all; }
+        .blog-content pre code { display: block; padding: 16px; background: #ffffff; color: #1da31d; overflow-x: auto; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 24px; font-family: monospace; }
+        [data-theme="dark"] .blog-content code, [data-theme="dark"] .blog-content pre code { background: #1e1e1e; color: #4af626; border-color: #333; }
+        .blog-content table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 16px; }
+        .blog-content th, .blog-content td { text-align: left; padding: 16px; border-bottom: 1px solid var(--border-color); }
+        .blog-content th { font-weight: 600; color: var(--text-primary); }
+
+        /* Mid-content CTA */
+        .mid-cta {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 56px 0;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        @media (max-width: 768px) { .mid-cta { flex-direction: column; text-align: center; } }
+        .mid-cta-text h3 { margin: 0 0 16px; font-size: 26px; color: var(--text-primary); line-height: 1.2; }
+        .mid-cta-text p { margin-bottom: 24px; font-size: 17px; }
+        .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent); color: #ffffff !important; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px; transition: 0.2s; border: none; cursor: pointer; }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); text-decoration: none !important; }
+        
+        /* Floating Right CTA */
+        .cta-sidebar { position: sticky; top: 100px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; }
+        .cta-sidebar-img { width: 100%; border-bottom: 1px solid var(--border-color); display: block; }
+        .cta-sidebar-content { padding: 24px; }
+        .cta-sidebar-content h4 { font-size: 18px; color: var(--text-primary); margin-bottom: 8px; font-weight: 600; }
+        .cta-sidebar-content p { font-size: 15px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+        .cta-sidebar .btn-primary { width: 100%; }
+        
+        /* Author bio */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 64px;
+            margin-bottom: 64px;
+        }
+        .author-box img {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .author-info h4 { color: var(--text-primary); margin: 0 0 6px 0; font-size: 18px; }
+        .author-info h4 a { color: var(--accent); text-decoration: none; font-size: 14px; font-weight: normal; margin-left: 8px; }
+        .author-info h4 a:hover { text-decoration: underline; }
+        .author-info p { color: var(--text-secondary); margin: 0; font-size: 16px; line-height: 1.5; }
+        
+        /* Sticky Share Bar */
+        .share-bar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 50;
+        }
+        .share-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ffffff !important;
+            border: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .share-btn:hover { transform: scale(1.1); filter: brightness(1.1); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .share-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+        .blog-content img { max-width: 100%; height: auto; border-radius: 12px; }
+
+        /* Engagement Section */
+        .engagement-section { margin: 60px 0 40px; padding-top: 40px; border-top: 1px solid var(--border-color); }
+        .engagement-actions { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+        .engagement-left, .engagement-right { display: flex; align-items: center; gap: 12px; }
+        .eng-btn { display: flex; align-items: center; gap: 8px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .eng-btn:hover { background: var(--hover-bg); transform: translateY(-1px); }
+        .eng-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+        
+        .comments-area h4 { font-size: 20px; color: var(--text-primary); margin-bottom: 20px; }
+        .comment-input-box { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+        .comment-input-box textarea, .comment-input-box input { width: 100%; box-sizing: border-box; padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); font-family: inherit; }
+        .comment-input-box input { padding: 12px 16px; margin-bottom: -4px; font-size: 15px; }
+        .comment-input-box textarea { min-height: 80px; resize: vertical; }
+        .comment-input-box textarea:focus, .comment-input-box input:focus { outline: none; border-color: var(--accent); }
+        .comment-input-box .btn-primary { align-self: flex-end; padding: 10px 24px; font-size: 14px; }
+        
+        .mock-comment { display: flex; gap: 16px; margin-bottom: 24px; }
+        .mock-comment-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--text-secondary); }
+        .mock-comment-content { flex: 1; }
+        .mock-comment-content h5 { margin: 0 0 4px 0; font-size: 15px; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+        .mock-comment-content span { font-size: 12px; color: var(--text-secondary); font-weight: normal; }
+        .mock-comment-content p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text-secondary); }
+
+        @media (max-width: 768px) {
+            .blog-title { font-size: 32px; word-wrap: break-word; overflow-wrap: break-word; }
+            .blog-subtitle { font-size: 17px; }
+            .author-meta-top { flex-direction: column; gap: 8px; }
+            .author-meta-top .dot-sep { display: none; }
+            .blog-content { font-size: 16px; line-height: 1.6; word-wrap: break-word; overflow-wrap: break-word; }
+            .blog-content h2 { font-size: 26px; margin: 40px 0 20px; }
+            .blog-content h3 { font-size: 20px; }
+            .blog-container, .blog-top-section { padding: 0 20px; gap: 32px; margin-top: 90px; }
+            .blog-hero { margin-bottom: 32px; }
+            .author-box { flex-direction: column; text-align: center; padding: 24px; gap: 12px; margin-top: 40px; }
+            .mid-cta { padding: 24px; margin: 40px 0; }
+            .blog-content table { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; }
+            .blog-content pre { max-width: 100%; margin-left: 0; margin-right: 0; border-radius: 8px; border-left: 1px solid #333; border-right: 1px solid #333; }
+            .blog-content pre code { border-radius: 8px; border: none; }
+        }
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "How to Clear Cookies on a Mac: Safari, Chrome and Firefox",
+      "description": "How to clear cookies on a Mac in Safari, Chrome and Firefox, for one site or all of them, what you'll be signed out of, and how to block third-party cookies.",
+      "author": { "@type": "Person", "name": "Naman Raj", "url": "https://x.com/thenamanraj" },
+      "publisher": { "@type": "Organization", "name": "Mac Slice", "logo": { "@type": "ImageObject", "url": "https://www.macslice.online/assets/mac_slice_logo.png" } },
+      "datePublished": "2026-09-30",
+      "dateModified": "2026-09-30",
+      "image": "https://www.macslice.online/assets/screenshots/real_hero_image.webp"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.macslice.online" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.macslice.online/blog" },
+        { "@type": "ListItem", "position": 3, "name": "How to Clear Cookies on a Mac: Safari, Chrome and Firefox", "item": "https://www.macslice.online/blog/how-to-clear-cookies-on-mac" }
+      ]
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F9N2S4S064"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-F9N2S4S064');
+    </script>
+</head>
+<body>
+    <div class="share-bar">
+        <a href="https://twitter.com/intent/tweet?text=Learn%20how%20to%20clear%20cookies%20on%20a%20Mac%20in%20Safari%2C%20Chrome%20and%20Firefox%21%20%F0%9F%8D%AA&url=https%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac" target="_blank" class="share-btn" aria-label="Share on X" style="color: #000000;">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac" target="_blank" class="share-btn" aria-label="Share on Facebook" style="color: #1877F2;">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac&title=How%20to%20Free%20Up%20Space%20on%20Mac" target="_blank" class="share-btn" aria-label="Share on LinkedIn" style="color: #0A66C2;">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:?subject=Struggling%20with%20Mac%20storage%3F&body=Learn%20how%20to%20clear%20cookies%20on%20a%20Mac%20in%20Safari%2C%20Chrome%20and%20Firefox%21%20%F0%9F%8D%AA%0A%0Ahttps%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac" class="share-btn" aria-label="Share via Email" style="color: #EA4335;">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+    </div>
+
+    <nav class="navbar" style="border-bottom: none !important; background: var(--bg-primary) !important;">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="../index.html" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                    <img src="../assets/mac_slice_logo.webp" alt="Mac Slice Logo" style="width: 28px; height: 28px; border-radius: 6px;">
+                    <span class="editorial-font" style="font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">mac slice</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html#how-it-works">How it Works</a>
+                <a href="../blog.html">Blog</a>
+                <a href="../pricing.html">Pricing</a>
+                <a class="buy-btn buy-btn-mobile" href="/pricing">Get Pro</a>
+                <button class="theme-toggle theme-toggle-mobile" aria-label="Toggle Theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+                        <div class="nav-actions">
+                <button class="mobile-menu-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="blog-top-section">
+        <header class="blog-header">
+            <div class="blog-breadcrumbs">
+                <a href="../blog.html">Guides</a> / <a href="#how-to-clear-cookies-in-safari-on-a-mac">Clear cookies</a>
+            </div>
+            <h1 class="blog-title">How to Clear Cookies on a Mac: Safari, Chrome and Firefox</h1>
+            <p class="blog-subtitle">How to clear cookies on a Mac in Safari, Chrome and Firefox, for one site or all of them, what you'll be signed out of, and how to block third-party cookies.</p>
+            
+            <div class="author-meta-top">
+                <img src="https://unavatar.io/twitter/thenamanraj" alt="Naman Raj" class="avatar-img">
+                <span class="avatar-text">Naman Raj</span>
+                <a href="https://x.com/thenamanraj" target="_blank" class="avatar-handle">@thenamanraj</a>
+                <span class="dot-sep">·</span>
+                <span>Updated <time>Sep 30, 2026</time></span>
+                <span class="dot-sep">·</span>
+                <span>7 min read</span>
+            </div>
+        </header>
+
+        <img src="../assets/screenshots/real_hero_image.webp" alt="Mac Slice analyzing local folders" class="blog-hero">
+    </div>
+
+    <div class="blog-container">
+        <aside class="toc-sidebar">
+            <h4>On this page</h4>
+            <ul id="toc-list">
+                <li><a href="#how-to-clear-cookies-in-safari-on-a-mac">How to clear cookies in Safari on a Mac</a></li>
+                <li><a href="#how-to-clear-cookies-in-chrome-on-a-mac">How to clear cookies in Chrome on a Mac</a></li>
+                <li><a href="#how-to-clear-cookies-in-firefox-on-a-mac">How to clear cookies in Firefox on a Mac</a></li>
+                <li><a href="#what-happens-when-you-clear-cookies">What happens when you clear cookies?</a></li>
+                <li><a href="#should-i-clear-cookies-or-cache">Should I clear cookies or cache?</a></li>
+                <li><a href="#do-cookies-take-up-space-on-a-mac">Do cookies take up space on a Mac?</a></li>
+            </ul>
+        </aside>
+
+        <main class="blog-article">
+            <div class="blog-content">
+                <h2 id="how-to-clear-cookies-in-safari-on-a-mac" style="margin-top: 0;">How to clear cookies in Safari on a Mac</h2>
+                <p>Safari keeps cookies with other site data (like caches and local storage) and manages them all in one place. Clearing them is straightforward, but it will sign you out of websites.</p>
+                
+                <h3>Clear cookies for all sites:</h3>
+                <ol>
+                    <li>Open <strong>Safari</strong> > <strong>Settings</strong> (or press <code>Cmd + ,</code>) and click on the <strong>Privacy</strong> tab.</li>
+                    <li>Click on <strong>Manage Website Data…</strong>.</li>
+                    <li>Click <strong>Remove All</strong>, then confirm your choice.</li>
+                </ol>
+
+                <h3>Clear cookies for one specific site:</h3>
+                <ol>
+                    <li>In the same <strong>Manage Website Data</strong> window, type the site's name into the search field in the top right.</li>
+                    <li>Select the site from the list and click <strong>Remove</strong>.</li>
+                </ol>
+
+                <p>To stop most tracking cookies without breaking websites, leave <strong>Prevent cross-site tracking</strong> turned on in the Privacy settings (it is on by default). There is also an option to <strong>Block all cookies</strong>, but this breaks sign-ins on many sites, so most people should leave it off.</p>
+
+                <div class="mid-cta">
+                    <div class="mid-cta-text">
+                        <h3>Cookies are tiny. Find what's actually big.</h3>
+                        <p>Clearing cookies won't free up space; they're only a few kilobytes. If your Mac is full, the real culprits are hidden Library folders, old backups, and app caches. Mac Slice shows what is actually filling your Mac, drawn to scale, for free. Pro clears it safely in one click.</p>
+                        <a href="../pricing.html" class="btn-primary">Get Mac Slice Pro · $12.99</a>
+                        <p style="font-size: 14px; margin-top: 16px; color: var(--text-secondary);">✓ One-time payment · 15-day guarantee</p>
+                    </div>
+                    <div style="flex: 1;">
+                        <img src="../assets/screenshots/feature2.webp" alt="Mac Slice Chart" style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    </div>
+                </div>
+
+                <h2 id="how-to-clear-cookies-in-chrome-on-a-mac">How to clear cookies in Chrome on a Mac</h2>
+                
+                <h3>Clear cookies for all sites:</h3>
+                <ol>
+                    <li>Open the <strong>Chrome</strong> menu and choose <strong>Delete Browsing Data…</strong> (or press <code>Cmd + Shift + Delete</code>).</li>
+                    <li>Tick <strong>Cookies and other site data</strong>. (Untick <em>Browsing history</em> and <em>Cached images and files</em> if you only want cookies gone).</li>
+                    <li>Choose a time range (select <strong>All time</strong> for everything) and click <strong>Delete data</strong>.</li>
+                </ol>
+
+                <h3>Clear cookies for one specific site:</h3>
+                <ol>
+                    <li>Open Chrome > <strong>Settings</strong> > <strong>Privacy and security</strong> > <strong>Third-party cookies</strong>.</li>
+                    <li>Click <strong>See all site data and permissions</strong>.</li>
+                    <li>Search for the site and click the trash icon next to it.</li>
+                </ol>
+
+                <p>You can also click the icon at the far left of the address bar on any page, choose <strong>Cookies and site data</strong>, and manage that specific site's cookies right from there.</p>
+
+                <h2 id="how-to-clear-cookies-in-firefox-on-a-mac">How to clear cookies in Firefox on a Mac</h2>
+                
+                <h3>Clear cookies for all sites:</h3>
+                <ol>
+                    <li>Open <strong>Firefox</strong> > <strong>Settings</strong> and click on <strong>Privacy & Security</strong> in the sidebar.</li>
+                    <li>Scroll down to <strong>Cookies and Site Data</strong> and click <strong>Clear Data…</strong>.</li>
+                    <li>Tick <strong>Cookies and site data</strong> (untick cached web content if you're only after cookies), and click <strong>Clear</strong>.</li>
+                </ol>
+
+                <h3>Clear cookies for one specific site:</h3>
+                <ol>
+                    <li>In the same section, click <strong>Manage Data…</strong>.</li>
+                    <li>Search for the site, select it, click <strong>Remove Selected</strong>, then <strong>Save Changes</strong>.</li>
+                </ol>
+
+                <p>Alternatively, on the site itself, click the padlock icon in the address bar and choose <strong>Clear cookies and site data…</strong>.</p>
+
+                <h2 id="what-happens-when-you-clear-cookies">What happens when you clear cookies?</h2>
+                <p>Clearing cookies on a Mac signs you out of every website that used them. It forgets site preferences such as your language, region, and "don't show this again" choices. It empties shopping baskets on sites that store them in cookies, and resets cookie consent banners so they appear again.</p>
+                <p>Your saved passwords are <strong>not</strong> affected; those live in the browser's built-in password manager or in iCloud Keychain, not in cookies. Bookmarks and downloads aren't affected either.</p>
+
+                <h2 id="should-i-clear-cookies-or-cache">Should I clear cookies or cache?</h2>
+                <p>Clear <strong>cookies</strong> when a site keeps you signed in wrongly, shows the wrong region or account, or won't sign you in at all. Clear the <strong>cache</strong> when pages look broken, show old content, or load stale images and scripts. The two are separate options in every browser, and clearing the cache keeps you signed in.</p>
+
+                <h2 id="do-cookies-take-up-space-on-a-mac">Do cookies take up space on a Mac?</h2>
+                <p>Cookies take almost no space. A browser's entire cookie store is usually just a few megabytes at most, because each cookie is a tiny text entry. What people often mistake for "cookie bloat" is actually the browser cache and site storage, which can reach gigabytes, and app caches elsewhere in your Library, which can reach tens of gigabytes.</p>
+                <p>If you're clearing cookies to free up disk space, it won't help. A <a href="../pricing.html" style="color:var(--accent);">storage map like Mac Slice</a> shows the real culprits in one scan.</p>
+                
+                <div class="engagement-section">
+                    <div class="engagement-actions">
+                        <div class="engagement-left">
+                            <button class="eng-btn" onclick="this.querySelector('svg').style.fill='currentColor'; this.querySelector('.count').innerText='43';">
+                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                <span>Like</span>
+                                <span class="count">42</span>
+                            </button>
+                            <button class="eng-btn" onclick="document.querySelector('.comment-input-box textarea').focus();">
+                                <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                <span id="comments-btn-count">3 Comments</span>
+                            </button>
+                        </div>
+                        <div class="engagement-right" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <button class="eng-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');">
+                                <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                Copy Link
+                            </button>
+                            <a href="https://twitter.com/intent/tweet?text=Learn%20how%20to%20clear%20cookies%20on%20a%20Mac%20in%20Safari%2C%20Chrome%20and%20Firefox%21%20%F0%9F%8D%AA&url=https%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac" target="_blank" class="share-btn" style="width: 36px; height: 36px; color: #000000;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac" target="_blank" class="share-btn" style="width: 36px; height: 36px; color: #1877F2;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac&title=How%20to%20Free%20Up%20Space%20on%20Mac&summary=Learn%20how%20to%20clear%20cookies%20on%20a%20Mac%20in%20Safari%2C%20Chrome%20and%20Firefox%21%20%F0%9F%8D%AA" target="_blank" class="share-btn" style="width: 36px; height: 36px; color: #0A66C2;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                            <a href="mailto:?subject=Is%20your%20Mac%20out%20of%20storage%3F%20%F0%9F%9A%A8&body=Learn%20how%20to%20clear%20cookies%20on%20a%20Mac%20in%20Safari%2C%20Chrome%20and%20Firefox%21%20%F0%9F%8D%AA%0A%0Ahttps%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac" class="share-btn" style="width: 36px; height: 36px; color: #EA4335;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                            <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fwww.macslice.online%2Fblog%2Fhow-to-clear-cookies-on-mac&title=Learn%20how%20to%20clear%20cookies%20on%20a%20Mac%20in%20Safari%2C%20Chrome%20and%20Firefox%21%20%F0%9F%8D%AA" target="_blank" class="share-btn" style="width: 36px; height: 36px; color: #FF4500;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M22 11.5c0-1.65-1.35-3-3-3-.93 0-1.76.43-2.3 1.1-.98-.63-2.22-1.03-3.6-1.12l1-4.75 3.3.7c.05 1.13 1 2.05 2.15 2.05 1.2 0 2.15-.97 2.15-2.17 0-1.2-.95-2.17-2.15-2.17-1.1 0-1.95.77-2.12 1.8l-3.8-.8c-.1-.02-.25.04-.3.13l-1.15 5.5c-1.4.08-2.65.48-3.65 1.1-1.3-1.6-3.85-1.4-5.02.3C2 13 3 15 4.3 15.3c-.03.22-.05.45-.05.67 0 3.3 3.48 6 7.75 6 4.25 0 7.72-2.7 7.72-6 0-.22-.02-.45-.05-.68 1.28-.3 2.3-1.9 2.3-3.8zm-15.3.5c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm8.55 4.4c-1.32 1.33-4.5 1.33-5.83 0-.17-.18-.17-.48 0-.66.18-.18.48-.18.67 0 .93.93 3.54.93 4.47 0 .18-.18.48-.18.66 0 .17.18.17.48 0 .66zm-.55-2.4c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg></a>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-area">
+                        <h4 id="comments-count-title">Comments (3)</h4>
+                        <div class="comment-input-box">
+                            <input type="text" id="live-comment-name" placeholder="Your name (required)">
+                            <textarea id="live-comment-input" placeholder="Add a public comment..."></textarea>
+                            <button class="btn-primary" onclick="postLiveComment()">Post</button>
+                        </div>
+                        
+                        <div class="mock-comment">
+                            <div class="mock-comment-avatar">A</div>
+                            <div class="mock-comment-content">
+                                <h5>Alex M. <span>43 minutes ago</span></h5>
+                                <p>This guide was exactly what I needed! I managed to clear 40GB of old Xcode caches that I didn't even know existed. Thank you!</p>
+                            </div>
+                        </div>
+                        <div class="mock-comment">
+                            <div class="mock-comment-avatar">S</div>
+                            <div class="mock-comment-content">
+                                <h5>Sarah Jenkins <span>3 hours ago</span></h5>
+                                <p>I was terrified of deleting System Data but your explanation made it super clear. Mac is running much smoother now.</p>
+                            </div>
+                        </div>
+                        <div class="mock-comment">
+                            <div class="mock-comment-avatar">P</div>
+                            <div class="mock-comment-content">
+                                <h5>Priya S. <span>11 hours ago</span></h5>
+                                <p>Thank you! Finally found what was eating up my 256GB Mac. I had 60GB of old Xcode simulators sitting there doing nothing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-box">
+                    <img src="https://unavatar.io/twitter/thenamanraj" alt="Naman Raj" class="author-avatar-img">
+                    <div class="author-info">
+                        <h4>Naman Raj <a href="https://x.com/thenamanraj" target="_blank">@thenamanraj</a></h4>
+                        <p>Builds Mac Slice and writes these guides from what the app finds on real Macs. Last checked this one on Sep 30, 2026.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="cta-sidebar">
+            <img src="../assets/screenshots/real_hero_image.webp" alt="Mac Slice Interface" class="cta-sidebar-img">
+            <div class="cta-sidebar-content">
+                <h4>Mac Slice</h4>
+                <p>See every folder on your Mac drawn to scale, then clear what you don't need natively.</p>
+                <a href="../pricing.html" class="btn-primary">Get Pro · $12.99</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-content" style="max-width: 1100px; padding: 40px 24px; margin: 0 auto;">
+            <div class="footer-grid">
+                
+                <!-- Left: Copyright & Links -->
+                <div class="left">
+                    <p class="footer-copyright" style="margin: 0; color: var(--text-secondary); font-size: 14px;">&copy; 2026 Mac Slice. Built natively for macOS.</p>
+                    <div class="footer-links-stacked">
+                        <a href="../pricing.html">Pricing</a>
+                        <a href="../privacy">Privacy Policy</a>
+                        <a href="../terms">Terms of Service</a>
+                        <a href="../refunds">Refund Policy</a>
+                        <a href="../support">Contact Support</a>
+                    </div>
+                </div>
+                
+                <!-- Center: Logo/Name -->
+                <div class="center" style="display: flex; justify-content: center; align-items: flex-start; padding-top: 4px;">
+                    <span class="editorial-font" style="font-size: 24px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-primary);">mac slice</span>
+                </div>
+                
+                <!-- Right: Follow me + Circular X Icon -->
+                <div class="right">
+                    <span style="font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-top: 14px;">Follow me</span>
+                    <a href="https://x.com/thenamanraj" target="_blank" aria-label="X" class="circle-x-btn">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <script src="../main.js"></script>
+    <script>
+        document.getElementById('theme-toggle').innerHTML = `
+            <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        `;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.blog-content h2[id], .blog-content h3[id]');
+            const navLinks = document.querySelectorAll('.toc-sidebar li a');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-100px 0px -70% 0px', threshold: 0 });
+
+            sections.forEach(sec => observer.observe(sec));
+        });
+
+        function postLiveComment() {
+            const nameInput = document.getElementById('live-comment-name');
+            const input = document.getElementById('live-comment-input');
+            const name = nameInput.value.trim();
+            const text = input.value.trim();
+            
+            if (!name) {
+                alert('Please enter your name.');
+                nameInput.focus();
+                return;
+            }
+            if (!text) return;
+            
+            const firstLetter = name.charAt(0).toUpperCase();
+            const safeName = name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            
+            const commentHTML = `
+                <div class="mock-comment">
+                    <div class="mock-comment-avatar">${firstLetter}</div>
+                    <div class="mock-comment-content">
+                        <h5>${safeName} <span>Just now</span></h5>
+                        <p>${text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+                    </div>
+                </div>
+            `;
+            
+            const inputBox = document.querySelector('.comment-input-box');
+            inputBox.insertAdjacentHTML('afterend', commentHTML);
+            
+            input.value = '';
+            
+            const countBtn = document.getElementById('comments-btn-count');
+            const countTitle = document.getElementById('comments-count-title');
+            
+            if (countBtn && countTitle) {
+                const currentCount = parseInt(countBtn.innerText.split(' ')[0]);
+                const newCount = currentCount + 1;
+                countBtn.innerText = newCount + ' Comments';
+                countTitle.innerText = 'Comments (' + newCount + ')';
+            }
+        }
+    </script>
+</body>
+</html>
