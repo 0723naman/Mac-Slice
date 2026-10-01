@@ -15,7 +15,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid email address.' });
     }
 
-    if (process.env.KV_REST_API_URL) {
+    if (process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL) {
       // Add the email to a Redis Set named 'free_downloads'
       // SADD ensures that duplicates are automatically ignored
       await kv.sadd('free_downloads', email);
