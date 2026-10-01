@@ -68,14 +68,14 @@ body {
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 800px;
-    height: 54px;
+    max-width: 900px;
+    height: 64px;
     background: var(--nav-bg);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     z-index: 1000;
     border: 1px solid var(--border-color);
-    border-radius: 27px;
+    border-radius: 32px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -117,7 +117,7 @@ body {
 .nav-links a {
     color: var(--text-primary);
     text-decoration: none;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     transition: opacity 0.2s ease;
 }
@@ -148,8 +148,9 @@ body {
 .buy-btn {
     background: var(--btn-primary-bg);
     color: var(--btn-primary-text) !important;
-    padding: 8px 16px;
-    border-radius: 16px;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 20px;
     font-weight: 500;
     border: none;
     cursor: pointer;
