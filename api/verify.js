@@ -1,4 +1,8 @@
-import { kv } from '@vercel/kv';
+import { createClient } from '@vercel/kv';
+
+const kvUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const kvToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+const kv = kvUrl && kvToken ? createClient({ url: kvUrl, token: kvToken }) : null;
 
 export default async function handler(req, res) {
   // Only allow GET requests
@@ -43,7 +47,7 @@ export default async function handler(req, res) {
       if (data.status === 'succeeded' || data.status === 'active' || data.status === 'paid' || data.status === 'captured') {
         
         // --- LICENSE BINDING LOGIC ---
-        if (machineId && process.env.KV_REST_API_URL) {
+        if (machineId && kv) {
           const claimedMachine = await kv.get(txn);
           
           if (claimedMachine) {
@@ -58,8 +62,8 @@ export default async function handler(req, res) {
             // First time use! Claim it for this machine forever.
             await kv.set(txn, machineId);
           }
-        } else if (machineId && !process.env.KV_REST_API_URL) {
-          console.warn("Vercel KV is not configured. License sharing prevention is currently inactive.");
+        } else if (machineId && !kv) {
+          console.warn("Vercel KV or Upstash is not configured. License sharing prevention is currently inactive.");
         }
 
         return res.status(200).json({ 
