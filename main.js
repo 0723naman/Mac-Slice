@@ -232,7 +232,7 @@ document.getElementById('proModal').addEventListener('click', function(e) {
 
 
 // --- Email Capture Download Modal ---
-document.addEventListener('DOMContentLoaded', () => {
+(function initEmailModal() {
     const downloadLinks = document.querySelectorAll('a[href*="MacSlice.dmg"]');
     if (downloadLinks.length === 0) return;
 
@@ -314,4 +314,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         }
     });
-});
+})();
