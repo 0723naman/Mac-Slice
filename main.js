@@ -628,3 +628,40 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => moveIndicator(document.querySelector('.macslice-nav-link.active')));
     }
 });
+
+// MacSlice Dynamic Glass Pill Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.macslice-nav-link');
+    const activePill = document.querySelector('.nav-active-pill');
+
+    function moveActivePill(activeLink) {
+        if (!activePill || !activeLink) return;
+        
+        activePill.style.opacity = '1';
+        
+        const rect = activeLink.getBoundingClientRect();
+        const parentRect = activeLink.parentElement.getBoundingClientRect();
+
+        activePill.style.width = `${rect.width + 32}px`;
+        activePill.style.height = `${rect.height + 18}px`;
+
+        activePill.style.transform = `translate(
+            ${rect.left - parentRect.left - 16}px,
+            ${rect.top - parentRect.top - 9}px
+        )`;
+    }
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            links.forEach(item => item.classList.remove('active'));
+            link.classList.add('active');
+            moveActivePill(link);
+        });
+    });
+
+    const activeLink = document.querySelector('.macslice-nav-link.active');
+    if (activeLink) {
+        setTimeout(() => moveActivePill(activeLink), 150);
+        window.addEventListener('resize', () => moveActivePill(document.querySelector('.macslice-nav-link.active')));
+    }
+});
