@@ -522,3 +522,38 @@ window.openEmailModal = function(url) {
         }, 100);
     }
 };
+
+// Navbar Scroll & Mobile Menu
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector(".navbar");
+    if(navbar) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 30) {
+                navbar.style.boxShadow = "0 20px 50px var(--shadow-color)";
+                navbar.style.background = "var(--modal-bg)";
+            } else {
+                navbar.style.boxShadow = "0 18px 45px rgba(0,0,0,0.05)";
+                navbar.style.background = "var(--nav-bg)";
+            }
+        });
+    }
+
+    const mobileToggle = document.getElementById("mobileToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    
+    if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("open");
+        });
+        
+        document.querySelectorAll(".mobile-link, .mobile-download, .mobile-buy").forEach(link => {
+            link.addEventListener("click", () => mobileMenu.classList.remove("open"));
+        });
+        
+        document.addEventListener("click", (event) => {
+            if (!mobileMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+                mobileMenu.classList.remove("open");
+            }
+        });
+    }
+});
