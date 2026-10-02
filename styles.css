@@ -1,4 +1,3 @@
-
 :root {
     --bg-color: #fbfbfd;
     --text-primary: #1d1d1f;
@@ -1452,13 +1451,21 @@ footer {
     border-color: var(--accent);
 }
 
+
 /* =========================================
-   NEW NAVBAR OVERRIDES
+   NAVBAR - EXACT REPLICA
 ========================================= */
+:root {
+  --nav-height: 88px;
+  --nav-radius: 28px;
+  --cg-nav-bg: rgba(255, 255, 255, 0.96);
+  --cg-text: #111318;
+  --cg-transition: 220ms cubic-bezier(.2,.8,.2,1);
+}
 
 .navbar-wrapper {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   position: sticky;
   top: 20px;
@@ -1466,15 +1473,15 @@ footer {
 }
 
 .navbar {
-  height: 80px;
+  height: var(--nav-height);
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
-  background: var(--nav-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 28px;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.05);
+  background: var(--cg-nav-bg);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--nav-radius);
+  box-shadow: 0 18px 45px rgba(31, 54, 98, 0.10), 0 4px 14px rgba(31, 54, 98, 0.06);
   overflow: hidden;
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
@@ -1483,58 +1490,61 @@ footer {
 
 .brand-area {
   height: 100%;
-  width: 320px;
+  width: 440px;
   position: relative;
   z-index: 3;
   display: flex;
   align-items: center;
-  padding-left: 30px;
-  background: var(--modal-bg);
+  padding-left: 34px;
+  background: #ffffff;
   flex-shrink: 0;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--cg-text);
 }
 
 .brand-logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 58px;
+  height: 58px;
+  border-radius: 17px;
   object-fit: cover;
+  box-shadow: 0 8px 20px rgba(53, 106, 255, 0.20);
   flex-shrink: 0;
 }
 
 .brand-name {
   font-size: 28px;
   font-weight: 700;
+  letter-spacing: -1.1px;
   white-space: nowrap;
 }
 
 .brand-area::after {
   content: "";
   position: absolute;
-  right: -100px;
+  right: -115px;
   bottom: -1px;
-  width: 200px;
+  width: 220px;
   height: 150px;
-  background: var(--modal-bg);
+  background: #ffffff;
   border-radius: 50% 50% 0 0;
+  transform: rotate(0deg);
   z-index: -1;
 }
 
 .brand-wave {
   position: absolute;
-  right: -30px;
+  right: -42px;
   bottom: 0;
-  width: 120px;
-  height: 84px;
-  background: var(--modal-bg);
-  border-radius: 65px 65px 0 0;
+  width: 155px;
+  height: 102px;
+  background: #ffffff;
+  border-radius: 80px 80px 0 0;
   z-index: 5;
 }
 
@@ -1543,7 +1553,7 @@ footer {
   position: absolute;
   width: 100%;
   height: 100%;
-  right: -60px;
+  right: -70px;
   background: transparent;
 }
 
@@ -1560,7 +1570,7 @@ footer {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 52px;
   height: 100%;
 }
 
@@ -1570,22 +1580,39 @@ footer {
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: var(--text-primary);
-  font-size: 16px;
+  color: var(--cg-text);
+  font-size: 17px;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s, transform 0.2s;
+  transition: color var(--cg-transition), transform var(--cg-transition);
 }
 
 .nav-link:hover {
   transform: translateY(-1px);
-  color: var(--accent);
+  color: #315ff5;
+}
+
+.nav-link.active {
+  color: #111318;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 19px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #155df5;
+  box-shadow: 0 0 0 4px rgba(21, 93, 245, 0.05);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   padding-right: 24px;
   position: relative;
   z-index: 20;
@@ -1593,60 +1620,62 @@ footer {
 }
 
 .download-btn {
-  height: 52px;
-  padding: 0 24px;
+  height: 58px;
+  padding: 0 29px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  border-radius: 16px;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
+  gap: 13px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid #dfe4ed;
+  color: #111318;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
-  transition: all 0.2s;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all var(--cg-transition);
 }
 
 .download-btn:hover {
   transform: translateY(-2px);
-  border-color: var(--text-primary);
-  background: var(--card-bg);
+  border-color: #c9d0dc;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(40, 55, 90, 0.10);
 }
 
 .download-icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   stroke-width: 2.2;
 }
 
 .buy-btn {
-  height: 52px;
-  padding: 0 28px;
+  height: 58px;
+  padding: 0 31px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  border-radius: 16px;
-  background: var(--text-primary);
-  color: var(--bg-color);
+  gap: 15px;
+  border-radius: 18px;
+  background: #111722;
+  color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: transform var(--cg-transition), box-shadow var(--cg-transition), background var(--cg-transition);
 }
 
 .buy-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px var(--shadow-color);
-  opacity: 0.9;
+  background: #1b2230;
+  box-shadow: 0 12px 25px rgba(14, 20, 32, 0.22);
 }
 
 .arrow {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
-  transition: transform 0.2s;
+  transition: transform var(--cg-transition);
 }
 
 .buy-btn:hover .arrow {
@@ -1655,19 +1684,19 @@ footer {
 
 .mobile-toggle {
   display: none;
-  width: 48px;
-  height: 48px;
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  background: var(--card-bg);
+  width: 50px;
+  height: 50px;
+  border: 1px solid #dde2eb;
+  border-radius: 15px;
+  background: white;
   cursor: pointer;
 }
 
 .mobile-toggle span {
   display: block;
-  width: 18px;
+  width: 19px;
   height: 2px;
-  background: var(--text-primary);
+  background: #111318;
   margin: 4px auto;
   border-radius: 999px;
 }
@@ -1678,13 +1707,11 @@ footer {
   top: calc(100% + 12px);
   left: 0;
   right: 0;
-  background: var(--nav-bg);
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 22px;
-  padding: 16px;
-  box-shadow: 0 20px 50px var(--shadow-color);
+  padding: 18px;
+  box-shadow: 0 20px 50px rgba(30, 50, 90, 0.14);
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-color);
 }
 
 .mobile-menu.open {
@@ -1694,15 +1721,15 @@ footer {
 .mobile-link {
   display: block;
   padding: 14px 16px;
-  border-radius: 12px;
-  color: var(--text-primary);
+  border-radius: 13px;
+  color: #111318;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
 }
 
 .mobile-link:hover {
-  background: var(--hover-bg);
+  background: #f1f4fa;
 }
 
 .mobile-actions {
@@ -1712,7 +1739,8 @@ footer {
   margin-top: 10px;
 }
 
-.mobile-download, .mobile-buy {
+.mobile-download,
+.mobile-buy {
   height: 50px;
   border-radius: 14px;
   display: flex;
@@ -1720,30 +1748,43 @@ footer {
   justify-content: center;
   text-decoration: none;
   font-weight: 600;
-  font-size: 15px;
 }
 
 .mobile-download {
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
+  border: 1px solid #dfe4ed;
+  color: #111318;
 }
 
 .mobile-buy {
-  background: var(--text-primary);
-  color: var(--bg-color);
+  background: #111722;
+  color: white;
 }
 
-@media (max-width: 1000px) {
-  .brand-area { width: 280px; }
-  .nav-links { gap: 20px; }
-  .nav-link, .download-btn, .buy-btn { font-size: 14px; }
-  .download-btn, .buy-btn { padding: 0 16px; }
+@media (max-width: 1150px) {
+  .brand-area { width: 340px; }
+  .nav-links { gap: 27px; }
+  .nav-link { font-size: 15px; }
+  .download-btn, .buy-btn { padding: 0 21px; font-size: 15px; }
+  .nav-actions { gap: 10px; }
 }
 
 @media (max-width: 900px) {
   .navbar { overflow: visible; }
   .brand-area { width: auto; padding-left: 18px; background: transparent; }
   .brand-area::after, .brand-wave { display: none; }
-  .nav-center, .download-btn, .buy-btn { display: none; }
+  .brand-logo { width: 48px; height: 48px; border-radius: 14px; }
+  .brand-name { font-size: 23px; }
+  .nav-center { display: none; }
+  .download-btn, .buy-btn { display: none; }
+  .nav-actions { padding-right: 13px; }
   .mobile-toggle { display: block; }
+}
+
+@media (max-width: 500px) {
+  .navbar-wrapper { top: 12px; }
+  .navbar { height: 72px; border-radius: 22px; }
+  .brand { gap: 11px; }
+  .brand-logo { width: 44px; height: 44px; border-radius: 13px; }
+  .brand-name { font-size: 20px; letter-spacing: -0.7px; }
+  .mobile-toggle { width: 45px; height: 45px; }
 }
