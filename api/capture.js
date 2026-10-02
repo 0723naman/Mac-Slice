@@ -13,7 +13,9 @@ export default async function handler(req, res) {
   try {
     const body = req.body;
     // Vercel serverless functions parse JSON automatically if Content-Type is application/json
-    const email = typeof body === 'string' ? JSON.parse(body).email : body.email;
+    const payload = typeof body === 'string' ? JSON.parse(body) : body;
+    const email = payload.email;
+    const country = payload.country || 'Unknown';
 
     if (!email || !email.includes('@')) {
       return res.status(400).json({ error: 'Invalid email address.' });
@@ -23,6 +25,7 @@ export default async function handler(req, res) {
       // Add the email to a Redis Set named 'free_downloads'
       // SADD ensures that duplicates are automatically ignored
       await kv.sadd('free_downloads', email);
+      await kv.hset('free_downloads_users', { [email]: country });
       
       return res.status(200).json({ success: true, message: 'Email saved successfully' });
     } else {

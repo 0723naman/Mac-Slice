@@ -256,6 +256,18 @@ function injectEmailModal() {
                 <p>Enter your email to get the free version. We'll send you occasional tips on keeping your Mac fast.</p>
                 <form id="emailDownloadForm">
                     <input type="email" id="downloadEmail" placeholder="your@email.com" required>
+                    <select id="downloadCountry" required style="width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-primary); font-family: inherit; font-size: 15px; outline: none; margin-top: 12px; transition: all 0.2s;">
+                        <option value="" disabled selected>Select your country</option>
+                        <option value="United States">United States</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="France">France</option>
+                        <option value="India">India</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Other">Other</option>
+                    </select>
                     <button type="submit" class="panel-btn solid" style="width: 100%; margin-top: 16px;">Download Free</button>
                 </form>
             </div>
@@ -279,6 +291,7 @@ function injectEmailModal() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('downloadEmail').value;
+        const country = document.getElementById('downloadCountry').value;
         const btn = form.querySelector('button');
         
         if (email && email.includes('@')) {
@@ -290,7 +303,7 @@ function injectEmailModal() {
                 await fetch('/api/capture', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email })
+                    body: JSON.stringify({ email, country })
                 });
             } catch (err) {
                 console.error("Failed to save email", err);
