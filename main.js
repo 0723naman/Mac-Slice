@@ -223,11 +223,14 @@ function closeProModal() {
 }
 
 // Close modal when clicking outside
-document.getElementById('proModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeProModal();
-    }
-});
+const proModalEl = document.getElementById('proModal');
+if (proModalEl) {
+    proModalEl.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeProModal();
+        }
+    });
+}
 
 
 
