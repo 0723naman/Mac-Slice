@@ -1378,23 +1378,6 @@ footer {
   overflow: hidden; /* Contains the mountain */
 }
 
-/* ================== MOUNTAIN BACKGROUND ================== */
-.macslice-mountain {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 55%;
-  height: 100%;
-  z-index: 0;
-  background-image: url('assets/navbar_mountain.jpg');
-  background-size: cover;
-  background-position: center right;
-  opacity: 0.85;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 20%, black 50%, black 100%);
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 20%, black 50%, black 100%);
-  pointer-events: none;
-}
-
 /* ================== BRAND AREA (LEFT) ================== */
 .macslice-brand {
   position: relative;
@@ -1587,5 +1570,5 @@ So I will make the brand area solid white and use the wave. */
   .macslice-wave { display: none; }
   .macslice-brand-logo { width: 48px; height: 48px; border-radius: 14px; }
   .macslice-brand-name { font-size: 24px; }
-  .macslice-mountain { width: 100%; opacity: 0.5; -webkit-mask-image: none; mask-image: none; }
+  
 }
