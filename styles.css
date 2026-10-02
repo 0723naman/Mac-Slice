@@ -1365,7 +1365,7 @@ footer {
 
 .macslice-navbar {
   position: relative;
-  height: 86px;
+  height: 70px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -1399,7 +1399,7 @@ footer {
 .macslice-brand {
   position: relative;
   height: 100%;
-  width: 320px;
+  width: 260px;
   display: flex;
   align-items: center;
   padding-left: 24px;
@@ -1416,16 +1416,16 @@ footer {
 }
 
 .macslice-brand-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 .macslice-brand-name {
   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 26px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: -1px;
   white-space: nowrap;
@@ -1468,7 +1468,7 @@ So I will make the brand area solid white and use the wave. */
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 80px;
+  padding-left: 60px;
   height: 100%;
   z-index: 10;
 }
@@ -1476,7 +1476,7 @@ So I will make the brand area solid white and use the wave. */
 .macslice-nav-links {
   position: relative;
   display: flex;
-  gap: 48px;
+  gap: 36px;
 }
 
 .macslice-nav-link {
@@ -1484,7 +1484,7 @@ So I will make the brand area solid white and use the wave. */
   z-index: 1;
   color: #111318;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
   transition: opacity 0.2s;
   padding: 10px 0;
@@ -1521,14 +1521,14 @@ So I will make the brand area solid white and use the wave. */
 .macslice-download {
   display: flex;
   align-items: center;
-  gap: 10px;
-  height: 58px;
-  padding: 0 24px;
+  gap: 8px;
+  height: 46px;
+  padding: 0 20px;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 18px;
   color: #111318;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
@@ -1543,13 +1543,13 @@ So I will make the brand area solid white and use the wave. */
 .macslice-buy {
   display: flex;
   align-items: center;
-  gap: 10px;
-  height: 58px;
-  padding: 0 28px;
+  gap: 8px;
+  height: 46px;
+  padding: 0 22px;
   background: #000000;
   border-radius: 18px;
   color: #ffffff;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;

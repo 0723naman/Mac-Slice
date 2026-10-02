@@ -622,10 +622,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const activeLink = document.querySelector('.macslice-nav-link.active');
-    if (activeLink) {
-        setTimeout(() => moveIndicator(activeLink), 150);
-        window.addEventListener('resize', () => moveIndicator(document.querySelector('.macslice-nav-link.active')));
+    // Determine active link based on current URL
+    let currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    if (currentPath === '') currentPath = 'index.html';
+    
+    let matchedLink = null;
+    links.forEach(link => {
+        link.classList.remove('active'); // Clear all
+        const linkHref = link.getAttribute('href');
+        if (linkHref) {
+            // e.g. "index.html#how-it-works" or "pricing.html"
+            const justPage = linkHref.split('#')[0] || 'index.html';
+            if (justPage === currentPath) {
+                matchedLink = link;
+            }
+        }
+    });
+
+    if (matchedLink) {
+        matchedLink.classList.add('active');
+        setTimeout(() => moveActivePill(matchedLink), 150);
+        window.addEventListener('resize', () => moveActivePill(document.querySelector('.macslice-nav-link.active')));
     }
 });
 
@@ -659,9 +676,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const activeLink = document.querySelector('.macslice-nav-link.active');
-    if (activeLink) {
-        setTimeout(() => moveActivePill(activeLink), 150);
+    // Determine active link based on current URL
+    let currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    if (currentPath === '') currentPath = 'index.html';
+    
+    let matchedLink = null;
+    links.forEach(link => {
+        link.classList.remove('active'); // Clear all
+        const linkHref = link.getAttribute('href');
+        if (linkHref) {
+            // e.g. "index.html#how-it-works" or "pricing.html"
+            const justPage = linkHref.split('#')[0] || 'index.html';
+            if (justPage === currentPath) {
+                matchedLink = link;
+            }
+        }
+    });
+
+    if (matchedLink) {
+        matchedLink.classList.add('active');
+        setTimeout(() => moveActivePill(matchedLink), 150);
         window.addEventListener('resize', () => moveActivePill(document.querySelector('.macslice-nav-link.active')));
     }
 });
