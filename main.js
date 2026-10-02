@@ -232,10 +232,12 @@ document.getElementById('proModal').addEventListener('click', function(e) {
 
 
 // --- Email Capture Download Modal ---
-function initEmailModal() {
-    if (document.getElementById('emailDownloadModal')) return; // Prevent double injection
+let emailModalInitialized = false;
+let currentDownloadUrl = '';
 
-    // Create the modal HTML
+function injectEmailModal() {
+    if (document.getElementById('emailDownloadModal')) return;
+
     const modalHTML = `
         <div id="emailDownloadModal" class="email-modal-overlay">
             <div class="email-modal">
@@ -262,18 +264,6 @@ function initEmailModal() {
     const modal = document.getElementById('emailDownloadModal');
     const closeBtn = document.getElementById('closeEmailModal');
     const form = document.getElementById('emailDownloadForm');
-    let currentDownloadUrl = '';
-
-    // Bulletproof Event Delegation: Listen on the whole body for any click on a download link
-    document.body.addEventListener('click', (e) => {
-        const link = e.target.closest('a');
-        if (link && link.href && link.href.includes('MacSlice.dmg')) {
-            e.preventDefault();
-            currentDownloadUrl = link.href;
-            modal.classList.add('active');
-            setTimeout(() => document.getElementById('downloadEmail').focus(), 100);
-        }
-    });
 
     closeBtn.addEventListener('click', () => {
         modal.classList.remove('active');
@@ -293,7 +283,6 @@ function initEmailModal() {
             btn.innerText = "Starting...";
             btn.style.opacity = "0.8";
 
-            // Save the email to Vercel KV
             try {
                 await fetch('/api/capture', {
                     method: 'POST',
@@ -304,7 +293,6 @@ function initEmailModal() {
                 console.error("Failed to save email", err);
             }
 
-            // Trigger the download
             window.location.href = currentDownloadUrl;
             
             setTimeout(() => {
@@ -317,9 +305,19 @@ function initEmailModal() {
     });
 }
 
-// Guarantee execution regardless of when the script is loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initEmailModal);
-} else {
-    initEmailModal();
-}
+window.openEmailModal = function(url) {
+    if (!emailModalInitialized) {
+        injectEmailModal();
+        emailModalInitialized = true;
+    }
+    
+    currentDownloadUrl = url;
+    const modal = document.getElementById('emailDownloadModal');
+    if (modal) {
+        modal.classList.add('active');
+        setTimeout(() => {
+            const emailInput = document.getElementById('downloadEmail');
+            if(emailInput) emailInput.focus();
+        }, 100);
+    }
+};
