@@ -1355,8 +1355,8 @@ footer {
    NEW MACSLICE NAVBAR WITH MOUNTAIN
 ========================================= */
 .macslice-navbar-wrapper {
-  width: 95vw;
-  max-width: 1500px;
+  width: max-content;
+  max-width: 95vw;
   margin: 20px auto 0 auto;
   position: sticky;
   top: 20px;
@@ -1464,7 +1464,7 @@ So I will make the brand area solid white and use the wave. */
 
 /* ================== CENTER LINKS ================== */
 .macslice-nav {
-  flex: 1;
+  padding-right: 40px;
   display: flex;
   align-items: center;
   position: relative;
