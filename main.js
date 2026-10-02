@@ -232,9 +232,8 @@ document.getElementById('proModal').addEventListener('click', function(e) {
 
 
 // --- Email Capture Download Modal ---
-(function initEmailModal() {
-    const downloadLinks = document.querySelectorAll('a[href*="MacSlice.dmg"]');
-    if (downloadLinks.length === 0) return;
+function initEmailModal() {
+    if (document.getElementById('emailDownloadModal')) return; // Prevent double injection
 
     // Create the modal HTML
     const modalHTML = `
@@ -265,13 +264,15 @@ document.getElementById('proModal').addEventListener('click', function(e) {
     const form = document.getElementById('emailDownloadForm');
     let currentDownloadUrl = '';
 
-    downloadLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // Bulletproof Event Delegation: Listen on the whole body for any click on a download link
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.href && link.href.includes('MacSlice.dmg')) {
             e.preventDefault();
             currentDownloadUrl = link.href;
             modal.classList.add('active');
             setTimeout(() => document.getElementById('downloadEmail').focus(), 100);
-        });
+        }
     });
 
     closeBtn.addEventListener('click', () => {
@@ -314,4 +315,11 @@ document.getElementById('proModal').addEventListener('click', function(e) {
             }, 1000);
         }
     });
-})();
+}
+
+// Guarantee execution regardless of when the script is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmailModal);
+} else {
+    initEmailModal();
+}
