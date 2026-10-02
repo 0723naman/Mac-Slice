@@ -679,15 +679,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Determine active link based on current URL
     let currentPath = window.location.pathname.split('/').pop() || 'index.html';
     if (currentPath === '') currentPath = 'index.html';
+    let currentHash = window.location.hash;
     
     let matchedLink = null;
     links.forEach(link => {
         link.classList.remove('active'); // Clear all
         const linkHref = link.getAttribute('href');
         if (linkHref) {
-            // e.g. "index.html#how-it-works" or "pricing.html"
-            const justPage = linkHref.split('#')[0] || 'index.html';
-            if (justPage === currentPath) {
+            const parts = linkHref.split('#');
+            const justPage = parts[0] || 'index.html';
+            const hashPart = parts[1] ? '#' + parts[1] : '';
+            
+            if (justPage === currentPath && hashPart === currentHash) {
                 matchedLink = link;
             }
         }
