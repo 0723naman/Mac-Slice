@@ -557,3 +557,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// Navbar Indicator Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.nav-link');
+    const indicator = document.querySelector('.nav-indicator');
+
+    function moveIndicator(link) {
+        if (!indicator || !link) return;
+        
+        indicator.style.opacity = '1';
+        
+        const linkRect = link.getBoundingClientRect();
+        const containerRect = link.parentElement.getBoundingClientRect();
+
+        // Calculate center of the link relative to the container
+        const x = linkRect.left + (linkRect.width / 2) - containerRect.left - (7 / 2); // 7 is dot width
+
+        indicator.style.transform = `translateX(${x}px)`;
+    }
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Wait for navigation if it's an anchor on the same page, otherwise we just move it
+            links.forEach(item => item.classList.remove('active'));
+            link.classList.add('active');
+            moveIndicator(link);
+        });
+    });
+
+    // Initialize position on load
+    const activeLink = document.querySelector('.nav-link.active');
+    if (activeLink) {
+        // slight delay to ensure fonts/layout are rendered
+        setTimeout(() => moveIndicator(activeLink), 100);
+    }
+});

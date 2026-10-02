@@ -60,20 +60,17 @@
     <link rel="apple-touch-icon" href="/assets/mac_slice_logo.png">
 </head>
 <body>
-              <header class="navbar-wrapper">
+                <header class="navbar-wrapper">
     <nav class="navbar">
       
       <!-- BRAND SECTION WITH SVG WAVE -->
-      <div class="brand-container">
-        <div class="brand-area">
-          <a href="index.html" class="brand">
-            <img src="assets/mac_slice_logo.webp" alt="Mac Slice Logo" class="brand-logo" />
-            <span class="brand-name">Mac Slice</span>
-          </a>
-        </div>
-        <!-- Perfect organic wave transition connecting the white brand area to the translucent navbar -->
-        <svg class="organic-wave" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <path d="M0,0 C60,0 40,100 100,100 L100,100 L0,100 Z" fill="#ffffff" />
+      <div class="brand-zone">
+        <a href="index.html" class="brand">
+          <img src="assets/mac_slice_logo.webp" alt="Mac Slice Logo" class="brand-logo" />
+          <span class="brand-name">Mac Slice</span>
+        </a>
+        <svg class="brand-wave" viewBox="0 0 190 100" preserveAspectRatio="none">
+          <path d="M 0 100 C 35 100, 42 92, 55 65 C 68 36, 82 15, 101 15 C 121 15, 136 37, 149 65 C 161 91, 167 100, 190 100 L 190 100 L 0 100 Z" />
         </svg>
       </div>
 
@@ -84,22 +81,23 @@
           <a href="blog.html" class="nav-link">Blog</a>
           <a href="pricing.html" class="nav-link">Pricing</a>
           <a href="support.html" class="nav-link">Support</a>
+          <div class="nav-indicator"></div>
         </div>
       </div>
 
       <!-- RIGHT ACTIONS -->
       <div class="nav-actions">
-        <a href="javascript:void(0)" onclick="openEmailModal('https://github.com/0723naman/Mac-Slice/releases/latest/download/MacSlice.dmg')" class="nav-download-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <a href="javascript:void(0)" onclick="openEmailModal('https://github.com/0723naman/Mac-Slice/releases/latest/download/MacSlice.dmg')" class="download-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path>
           </svg>
           Download
         </a>
-        <a href="pricing.html" class="nav-buy-btn">
-          Buy Now <span style="font-family: system-ui;">→</span>
+        <a href="pricing.html" class="buy-now-btn">
+          Buy Now <span style="font-family: system-ui; font-size: 20px; line-height: 1;">→</span>
         </a>
         <button class="mobile-toggle" aria-label="Open menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111318" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111318" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
 

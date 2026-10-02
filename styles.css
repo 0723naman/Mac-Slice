@@ -1352,15 +1352,8 @@ footer {
 
 
 /* =========================================
-   NEW ORGANIC WAVE NAVBAR
+   FINAL ORGANIC NAVBAR
 ========================================= */
-:root {
-  --nav-bg: rgba(255, 255, 255, 0.75);
-  --nav-text: #111318;
-  --nav-border: rgba(255, 255, 255, 0.4);
-  --nav-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0,0,0,0.02);
-}
-
 .navbar-wrapper {
   width: 95vw;
   max-width: 1500px;
@@ -1375,29 +1368,23 @@ footer {
   width: 100%;
   display: flex;
   align-items: center;
-  background: var(--nav-bg);
-  border: 1px solid var(--nav-border);
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 28px;
-  box-shadow: var(--nav-shadow);
+  box-shadow: 0 18px 45px rgba(30, 50, 90, 0.10);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   position: relative;
-  overflow: visible; /* Wave might need to stretch */
 }
 
 /* ================== BRAND AREA (LEFT) ================== */
-.brand-container {
+.brand-zone {
   position: relative;
   height: 100%;
-  display: flex;
-}
-
-.brand-area {
-  height: 100%;
-  width: 330px;
+  width: 380px;
   display: flex;
   align-items: center;
-  padding-left: 24px;
+  padding-left: 28px;
   background: #ffffff;
   border-radius: 28px 0 0 28px;
   z-index: 10;
@@ -1408,7 +1395,7 @@ footer {
   align-items: center;
   gap: 16px;
   text-decoration: none;
-  color: var(--nav-text);
+  color: #111318;
 }
 
 .brand-logo {
@@ -1427,15 +1414,18 @@ footer {
   white-space: nowrap;
 }
 
-/* ORGANIC WAVE SVG */
-.organic-wave {
+.brand-wave {
   position: absolute;
   left: 100%;
   top: 0;
   height: 100%;
-  width: 140px; /* Width of the transition */
+  width: 190px;
   z-index: 10;
   pointer-events: none;
+}
+
+.brand-wave path {
+  fill: #ffffff;
 }
 
 /* ================== CENTER LINKS ================== */
@@ -1443,38 +1433,41 @@ footer {
   flex: 1;
   display: flex;
   align-items: center;
-  padding-left: 150px; /* Make space for the wave */
+  position: relative;
+  padding-left: 100px;
   height: 100%;
 }
 
 .nav-links {
+  position: relative;
   display: flex;
-  gap: 48px;
+  gap: 50px;
 }
 
 .nav-link {
-  position: relative;
-  color: var(--nav-text);
+  color: #111318;
   text-decoration: none;
   font-size: 17px;
   font-weight: 500;
   transition: opacity 0.2s;
+  padding: 10px 0; /* extra hit area */
 }
 
 .nav-link:hover {
   opacity: 0.7;
 }
 
-.nav-link.active::after {
-  content: "";
+.nav-indicator {
   position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0px;
+  left: 0;
   width: 7px;
   height: 7px;
-  background-color: #0066cc;
+  background-color: #155df5;
   border-radius: 50%;
+  transition: transform 350ms cubic-bezier(.22, 1, .36, 1);
+  transform: translateX(-100px); /* hidden initially */
+  opacity: 0;
 }
 
 /* ================== RIGHT ACTIONS ================== */
@@ -1483,47 +1476,48 @@ footer {
   align-items: center;
   gap: 16px;
   padding-right: 20px;
+  z-index: 20;
 }
 
-.nav-download-btn {
+.download-btn {
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 52px;
+  height: 58px;
   padding: 0 24px;
   background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid #dfe3ea;
   border-radius: 18px;
-  color: var(--nav-text);
-  font-size: 16px;
+  color: #111318;
+  font-size: 17px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
   white-space: nowrap;
 }
 
-.nav-download-btn:hover {
+.download-btn:hover {
   background: #f8f8fa;
   border-color: rgba(0,0,0,0.2);
 }
 
-.nav-buy-btn {
+.buy-now-btn {
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 52px;
+  height: 58px;
   padding: 0 28px;
   background: #000000;
   border-radius: 18px;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
   white-space: nowrap;
 }
 
-.nav-buy-btn:hover {
+.buy-now-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
@@ -1538,19 +1532,19 @@ footer {
 }
 
 /* ================== RESPONSIVE ================== */
-@media (max-width: 1200px) {
-  .nav-center { padding-left: 80px; }
+@media (max-width: 1250px) {
+  .brand-zone { width: 300px; }
+  .nav-center { padding-left: 60px; }
   .nav-links { gap: 30px; }
-  .brand-area { width: 280px; }
 }
 
 @media (max-width: 1000px) {
   .nav-center { display: none; }
-  .nav-download-btn, .nav-buy-btn { display: none; }
+  .download-btn, .buy-now-btn { display: none; }
   .mobile-toggle { display: block; }
   .navbar { justify-content: space-between; }
-  .brand-area { width: auto; background: transparent; padding-left: 20px; }
-  .organic-wave { display: none; }
-  .brand-logo { width: 44px; height: 44px; border-radius: 12px; }
-  .brand-name { font-size: 22px; }
+  .brand-zone { width: auto; background: transparent; padding-left: 20px; }
+  .brand-wave { display: none; }
+  .brand-logo { width: 48px; height: 48px; border-radius: 14px; }
+  .brand-name { font-size: 24px; }
 }
