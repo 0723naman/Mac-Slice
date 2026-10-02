@@ -1407,10 +1407,10 @@ footer {
 }
 
 .macslice-brand-name {
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: -1px;
+  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0px;
   white-space: nowrap;
 }
 
