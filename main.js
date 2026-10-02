@@ -594,3 +594,37 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => moveIndicator(activeLink), 100);
     }
 });
+
+
+// MacSlice Dynamic Indicator Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.macslice-nav-link');
+    const indicator = document.querySelector('.macslice-nav-indicator');
+
+    function moveIndicator(link) {
+        if (!indicator || !link) return;
+        
+        indicator.style.opacity = '1';
+        
+        const linkRect = link.getBoundingClientRect();
+        const containerRect = link.parentElement.getBoundingClientRect();
+
+        const x = linkRect.left + (linkRect.width / 2) - containerRect.left - (7 / 2); 
+
+        indicator.style.transform = `translateX(${x}px)`;
+    }
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            links.forEach(item => item.classList.remove('active'));
+            link.classList.add('active');
+            moveIndicator(link);
+        });
+    });
+
+    const activeLink = document.querySelector('.macslice-nav-link.active');
+    if (activeLink) {
+        setTimeout(() => moveIndicator(activeLink), 150);
+        window.addEventListener('resize', () => moveIndicator(document.querySelector('.macslice-nav-link.active')));
+    }
+});

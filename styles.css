@@ -1352,9 +1352,9 @@ footer {
 
 
 /* =========================================
-   FINAL ORGANIC NAVBAR
+   NEW MACSLICE NAVBAR WITH MOUNTAIN
 ========================================= */
-.navbar-wrapper {
+.macslice-navbar-wrapper {
   width: 95vw;
   max-width: 1500px;
   margin: 20px auto 0 auto;
@@ -1363,34 +1363,51 @@ footer {
   z-index: 9999;
 }
 
-.navbar {
+.macslice-navbar {
+  position: relative;
   height: 86px;
   width: 100%;
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.90);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 28px;
   box-shadow: 0 18px 45px rgba(30, 50, 90, 0.10);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  position: relative;
+  overflow: hidden; /* Contains the mountain */
+}
+
+/* ================== MOUNTAIN BACKGROUND ================== */
+.macslice-mountain {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 55%;
+  height: 100%;
+  z-index: 0;
+  background-image: url('assets/navbar_mountain.jpg');
+  background-size: cover;
+  background-position: center right;
+  opacity: 0.85;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 20%, black 50%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 20%, black 50%, black 100%);
+  pointer-events: none;
 }
 
 /* ================== BRAND AREA (LEFT) ================== */
-.brand-zone {
+.macslice-brand {
   position: relative;
   height: 100%;
-  width: 380px;
+  width: 320px;
   display: flex;
   align-items: center;
-  padding-left: 28px;
-  background: #ffffff;
-  border-radius: 28px 0 0 28px;
+  padding-left: 24px;
+  background: transparent;
   z-index: 10;
 }
 
-.brand {
+.macslice-brand-link {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -1398,7 +1415,7 @@ footer {
   color: #111318;
 }
 
-.brand-logo {
+.macslice-brand-logo {
   width: 56px;
   height: 56px;
   border-radius: 16px;
@@ -1406,7 +1423,7 @@ footer {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
-.brand-name {
+.macslice-brand-name {
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 26px;
   font-weight: 700;
@@ -1414,50 +1431,68 @@ footer {
   white-space: nowrap;
 }
 
-.brand-wave {
+/* ================== ORGANIC WAVE SVG ================== */
+.macslice-wave {
   position: absolute;
   left: 100%;
   top: 0;
   height: 100%;
-  width: 190px;
+  width: 140px;
   z-index: 10;
   pointer-events: none;
 }
 
-.brand-wave path {
+.macslice-wave path {
+  fill: rgba(255, 255, 255, 0); /* Prompt asks for the organic wave, but also to match the reference. 
+  Wait, the prompt says "The SVG must use the SAME WHITE color as the brand section." 
+  BUT the brand section in the new image is TRANSLUCENT.
+  Let's make the brand area SOLID WHITE to satisfy the wave requirement, even though the image doesn't show it. */
+}
+
+/* Actually, the prompt says:
+"The logo/brand section must visually FLOW into the navigation using a large organic curved shape... Use an ACTUAL SVG shape."
+"The SVG must use the SAME WHITE color as the brand section."
+So I will make the brand area solid white and use the wave. */
+
+.macslice-brand {
+  background: #ffffff;
+}
+
+.macslice-wave path {
   fill: #ffffff;
 }
 
 /* ================== CENTER LINKS ================== */
-.nav-center {
+.macslice-nav {
   flex: 1;
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 100px;
+  padding-left: 80px;
   height: 100%;
+  z-index: 10;
 }
 
-.nav-links {
+.macslice-nav-links {
   position: relative;
   display: flex;
-  gap: 50px;
+  gap: 48px;
 }
 
-.nav-link {
+.macslice-nav-link {
   color: #111318;
   text-decoration: none;
   font-size: 17px;
   font-weight: 500;
   transition: opacity 0.2s;
-  padding: 10px 0; /* extra hit area */
+  padding: 10px 0;
 }
 
-.nav-link:hover {
+.macslice-nav-link:hover {
   opacity: 0.7;
 }
 
-.nav-indicator {
+.macslice-nav-indicator {
   position: absolute;
   bottom: 0px;
   left: 0;
@@ -1466,27 +1501,28 @@ footer {
   background-color: #155df5;
   border-radius: 50%;
   transition: transform 350ms cubic-bezier(.22, 1, .36, 1);
-  transform: translateX(-100px); /* hidden initially */
+  transform: translateX(-100px);
   opacity: 0;
+  pointer-events: none;
 }
 
 /* ================== RIGHT ACTIONS ================== */
-.nav-actions {
+.macslice-actions {
   display: flex;
   align-items: center;
   gap: 16px;
   padding-right: 20px;
-  z-index: 20;
+  z-index: 10; /* Above the mountain */
 }
 
-.download-btn {
+.macslice-download {
   display: flex;
   align-items: center;
   gap: 10px;
   height: 58px;
   padding: 0 24px;
-  background: #ffffff;
-  border: 1px solid #dfe3ea;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 18px;
   color: #111318;
   font-size: 17px;
@@ -1494,14 +1530,14 @@ footer {
   text-decoration: none;
   transition: all 0.2s;
   white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.download-btn:hover {
-  background: #f8f8fa;
-  border-color: rgba(0,0,0,0.2);
+.macslice-download:hover {
+  background: #ffffff;
 }
 
-.buy-now-btn {
+.macslice-buy {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1517,34 +1553,36 @@ footer {
   white-space: nowrap;
 }
 
-.buy-now-btn:hover {
+.macslice-buy:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* Mobile Toggle */
-.mobile-toggle {
+.macslice-mobile-toggle {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 10px;
+  z-index: 20;
 }
 
 /* ================== RESPONSIVE ================== */
 @media (max-width: 1250px) {
-  .brand-zone { width: 300px; }
-  .nav-center { padding-left: 60px; }
-  .nav-links { gap: 30px; }
+  .macslice-brand { width: 300px; }
+  .macslice-nav { padding-left: 60px; }
+  .macslice-nav-links { gap: 30px; }
 }
 
 @media (max-width: 1000px) {
-  .nav-center { display: none; }
-  .download-btn, .buy-now-btn { display: none; }
-  .mobile-toggle { display: block; }
-  .navbar { justify-content: space-between; }
-  .brand-zone { width: auto; background: transparent; padding-left: 20px; }
-  .brand-wave { display: none; }
-  .brand-logo { width: 48px; height: 48px; border-radius: 14px; }
-  .brand-name { font-size: 24px; }
+  .macslice-nav { display: none; }
+  .macslice-download, .macslice-buy { display: none; }
+  .macslice-mobile-toggle { display: block; }
+  .macslice-navbar { justify-content: space-between; }
+  .macslice-brand { width: auto; background: transparent; padding-left: 20px; }
+  .macslice-wave { display: none; }
+  .macslice-brand-logo { width: 48px; height: 48px; border-radius: 14px; }
+  .macslice-brand-name { font-size: 24px; }
+  .macslice-mountain { width: 100%; opacity: 0.5; -webkit-mask-image: none; mask-image: none; }
 }
