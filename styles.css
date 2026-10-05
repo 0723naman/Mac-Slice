@@ -1549,7 +1549,44 @@ So I will make the brand area solid white and use the wave. */
 }
 
 @media (max-width: 1000px) {
-  .macslice-nav { display: none; }
+  .macslice-navbar.mobile-open {
+    overflow: visible;
+  }
+  .macslice-nav { 
+    display: flex;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 15px 35px rgba(30, 50, 90, 0.1);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 99;
+  }
+  .macslice-navbar.mobile-open .macslice-nav {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .macslice-nav-links {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  .macslice-nav-link {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 18px;
+  }
   .macslice-download, .macslice-buy { display: none; }
   .macslice-mobile-toggle { display: block; }
   .macslice-navbar { justify-content: space-between; }
@@ -1557,5 +1594,4 @@ So I will make the brand area solid white and use the wave. */
   .macslice-wave { display: none; }
   .macslice-brand-logo { width: 48px; height: 48px; border-radius: 14px; }
   .macslice-brand-name { font-size: 24px; }
-  
 }

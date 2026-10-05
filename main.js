@@ -626,6 +626,30 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPath = window.location.pathname.split('/').pop() || 'index.html';
     if (currentPath === '') currentPath = 'index.html';
     
+    
+    // Mobile menu toggle
+    const mobileToggle = document.querySelector('.macslice-mobile-toggle');
+    const navbar = document.querySelector('.macslice-navbar');
+    if (mobileToggle && navbar) {
+        mobileToggle.addEventListener('click', () => {
+            navbar.classList.toggle('mobile-open');
+        });
+        
+        // Close on link click
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('mobile-open');
+            });
+        });
+        
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && navbar.classList.contains('mobile-open')) {
+                navbar.classList.remove('mobile-open');
+            }
+        });
+    }
+
     let matchedLink = null;
     links.forEach(link => {
         link.classList.remove('active'); // Clear all
